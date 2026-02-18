@@ -4,6 +4,7 @@ import Services from "@/components/Services";
 import FeaturedProjects from "@/components/FeaturedProjects";
 import PortfolioGrid from "@/components/PortfolioGrid";
 import Skills from "@/components/Skills";
+import Testimonials from "@/components/Testimonials";
 import Pricing from "@/components/Pricing";
 import Onboarding from "@/components/Onboarding";
 import CustomPlan from "@/components/CustomPlan";
@@ -20,6 +21,7 @@ const Index = () => {
       <FeaturedProjects />
       <PortfolioGrid />
       <Skills />
+      <Testimonials />
       <Pricing />
       <Onboarding />
       <CustomPlan />
