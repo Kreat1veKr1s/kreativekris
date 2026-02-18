@@ -1,5 +1,6 @@
-import { ExternalLink, TrendingUp, ImageIcon } from "lucide-react";
+import { ExternalLink, TrendingUp, ImageIcon, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 const projects = [
   {
@@ -53,52 +54,73 @@ const ImagePlaceholder = ({ label, aspect }: { label: string; aspect: string }) 
 };
 
 const FeaturedProjects = () => {
+  const [current, setCurrent] = useState(0);
+  const p = projects[current];
+
+  const prev = () => setCurrent((c) => (c === 0 ? projects.length - 1 : c - 1));
+  const next = () => setCurrent((c) => (c === projects.length - 1 ? 0 : c + 1));
+
   return (
     <section id="projects" className="section-padding bg-surface/50">
-      <div className="container max-w-6xl">
-        <div className="text-center mb-16">
+      <div className="container max-w-5xl">
+        <div className="text-center mb-12">
           <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-3">Featured Work</p>
           <h2 className="text-4xl md:text-5xl font-bold font-heading">
             Favorite <span className="text-gradient">Projects</span>
           </h2>
         </div>
 
-        <div className="space-y-12">
-          {projects.map((p) => (
-            <div
-              key={p.title}
-              className="glass rounded-2xl overflow-hidden card-hover group"
-            >
-              <div className={`bg-gradient-to-r ${p.gradient} p-8 md:p-10`}>
-                <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
-                  <div className="flex-1">
-                    <span className="text-xs text-primary font-semibold tracking-wider uppercase">{p.category}</span>
-                    <h3 className="text-2xl md:text-3xl font-bold font-heading mt-2 mb-4 text-foreground">{p.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed max-w-xl">{p.description}</p>
+        <div className="relative">
+          <div className="glass rounded-2xl overflow-hidden">
+            <div className={`bg-gradient-to-r ${p.gradient} p-8 md:p-10`}>
+              <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
+                <div className="flex-1">
+                  <span className="text-xs text-primary font-semibold tracking-wider uppercase">{p.category}</span>
+                  <h3 className="text-2xl md:text-3xl font-bold font-heading mt-2 mb-4 text-foreground">{p.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed max-w-xl">{p.description}</p>
+                </div>
+                <Button variant="hero-outline" size="sm" className="shrink-0 self-start">
+                  <ExternalLink className="w-4 h-4 mr-1" /> View Case Study
+                </Button>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-8">
+                {p.images.map((img) => (
+                  <ImagePlaceholder key={img.label} label={img.label} aspect={img.aspect} />
+                ))}
+              </div>
+
+              <div className="flex flex-wrap gap-3 mt-6">
+                {p.results.map((r) => (
+                  <div key={r} className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
+                    <TrendingUp className="w-3.5 h-3.5 text-primary" />
+                    <span className="text-sm font-medium text-foreground">{r}</span>
                   </div>
-                  <Button variant="hero-outline" size="sm" className="shrink-0 self-start">
-                    <ExternalLink className="w-4 h-4 mr-1" /> View Case Study
-                  </Button>
-                </div>
-
-                {/* Project Images */}
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-8">
-                  {p.images.map((img) => (
-                    <ImagePlaceholder key={img.label} label={img.label} aspect={img.aspect} />
-                  ))}
-                </div>
-
-                <div className="flex flex-wrap gap-3 mt-6">
-                  {p.results.map((r) => (
-                    <div key={r} className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
-                      <TrendingUp className="w-3.5 h-3.5 text-primary" />
-                      <span className="text-sm font-medium text-foreground">{r}</span>
-                    </div>
-                  ))}
-                </div>
+                ))}
               </div>
             </div>
-          ))}
+          </div>
+
+          {/* Navigation */}
+          <button onClick={prev} className="absolute left-0 md:-left-5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-secondary/80 hover:bg-secondary flex items-center justify-center text-foreground transition-colors z-10">
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button onClick={next} className="absolute right-0 md:-right-5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-secondary/80 hover:bg-secondary flex items-center justify-center text-foreground transition-colors z-10">
+            <ChevronRight className="w-5 h-5" />
+          </button>
+
+          {/* Dots */}
+          <div className="flex justify-center gap-2 mt-6">
+            {projects.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent(i)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  i === current ? "bg-primary w-6" : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

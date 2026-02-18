@@ -1,4 +1,5 @@
-import { Star, ExternalLink } from "lucide-react";
+import { Star, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
 
 const testimonials = [
   {
@@ -99,56 +100,80 @@ const StarRating = ({ rating }: { rating: number }) => (
 );
 
 const Testimonials = () => {
+  const [current, setCurrent] = useState(0);
+
+  const prev = () => setCurrent((c) => (c === 0 ? testimonials.length - 1 : c - 1));
+  const next = () => setCurrent((c) => (c === testimonials.length - 1 ? 0 : c + 1));
+
+  const t = testimonials[current];
+
   return (
     <section className="section-padding bg-background">
-      <div className="container max-w-6xl">
-        <div className="text-center mb-16">
-          <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-3">
-            Social Proof
-          </p>
+      <div className="container max-w-4xl">
+        <div className="text-center mb-12">
+          <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-3">Social Proof</p>
           <h2 className="text-4xl md:text-5xl font-bold font-heading">
             What Clients <span className="text-gradient">Say</span>
           </h2>
-          <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
-            Real reviews from real clients across multiple platforms.
-          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.map((t) => (
-            <div
-              key={t.name}
-              className="glass rounded-2xl p-6 flex flex-col justify-between card-hover group"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <StarRating rating={t.rating} />
-                  <a
-                    href={t.platformUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {t.platformIcon}
-                    <span>{t.platform}</span>
-                    <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </a>
-                </div>
-                <blockquote className="text-sm text-muted-foreground leading-relaxed mb-6">
-                  "{t.quote}"
-                </blockquote>
+        <div className="glass rounded-2xl p-8 md:p-12 relative">
+          {/* Navigation arrows */}
+          <button
+            onClick={prev}
+            className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-secondary/80 hover:bg-secondary flex items-center justify-center text-foreground transition-colors z-10"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            onClick={next}
+            className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-secondary/80 hover:bg-secondary flex items-center justify-center text-foreground transition-colors z-10"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+
+          <div className="text-center px-8">
+            <div className="flex items-center justify-center gap-4 mb-6">
+              <StarRating rating={t.rating} />
+              <a
+                href={t.platformUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {t.platformIcon}
+                <span>{t.platform}</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
+            </div>
+
+            <blockquote className="text-lg md:text-xl text-foreground/90 leading-relaxed mb-8 italic">
+              "{t.quote}"
+            </blockquote>
+
+            <div className="flex items-center justify-center gap-3">
+              <div className="w-12 h-12 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-bold">
+                {t.name.split(" ").map((n) => n[0]).join("")}
               </div>
-              <div className="flex items-center gap-3 pt-4 border-t border-border/50">
-                <div className="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-bold text-sm">
-                  {t.name.split(" ").map((n) => n[0]).join("")}
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-foreground">{t.name}</p>
-                  <p className="text-xs text-muted-foreground">{t.role}</p>
-                </div>
+              <div className="text-left">
+                <p className="font-semibold text-foreground">{t.name}</p>
+                <p className="text-sm text-muted-foreground">{t.role}</p>
               </div>
             </div>
-          ))}
+          </div>
+
+          {/* Dots */}
+          <div className="flex justify-center gap-2 mt-8">
+            {testimonials.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent(i)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  i === current ? "bg-primary w-6" : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
