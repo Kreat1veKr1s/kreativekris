@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Rocket, Sprout, Trophy, Check, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 const plans = [
   {
@@ -69,10 +70,15 @@ const Pricing = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {plans.map((plan) => (
-            <div
+          {plans.map((plan, i) => (
+            <motion.div
               key={plan.name}
-              className={`relative glass rounded-2xl p-8 flex flex-col card-hover ${
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.1 }}
+              whileHover={{ y: -8, transition: { duration: 0.2 } }}
+              className={`relative glass rounded-2xl p-8 flex flex-col ${
                 plan.popular ? "border-primary/40 glow-border" : ""
               }`}
             >
@@ -106,7 +112,7 @@ const Pricing = () => {
               >
                 Get Started <ArrowRight className="w-4 h-4 ml-1" />
               </Button>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
