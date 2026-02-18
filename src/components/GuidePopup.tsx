@@ -15,25 +15,41 @@ const GuidePopup = () => {
   const [subscribed, setSubscribed] = useState(false);
 
   useEffect(() => {
-    // Don't show if already dismissed in this session
     if (sessionStorage.getItem(DISMISSED_KEY)) return;
 
-    const handleScroll = () => {
-      const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-      if (scrollPercent > 0.35) {
+    let armed = false;
+
+    // Arm the exit-intent detector after user has been on page for 5 seconds
+    const armTimer = setTimeout(() => {
+      armed = true;
+    }, 5000);
+
+    // Desktop: detect mouse leaving viewport (moving toward browser chrome / tabs)
+    const handleMouseLeave = (e: MouseEvent) => {
+      if (!armed) return;
+      // Only trigger when mouse exits through the top of the viewport
+      if (e.clientY <= 0) {
         setVisible(true);
-        window.removeEventListener("scroll", handleScroll);
+        document.removeEventListener("mouseleave", handleMouseLeave);
       }
     };
 
-    // Delay adding listener to avoid immediate trigger
-    const timer = setTimeout(() => {
-      window.addEventListener("scroll", handleScroll, { passive: true });
-    }, 3000);
+    // Mobile fallback: detect tab/window losing focus (user switching apps/tabs)
+    const handleVisibilityChange = () => {
+      if (!armed) return;
+      if (document.visibilityState === "hidden") {
+        setVisible(true);
+        document.removeEventListener("visibilitychange", handleVisibilityChange);
+      }
+    };
+
+    document.addEventListener("mouseleave", handleMouseLeave);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
-      clearTimeout(timer);
-      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(armTimer);
+      document.removeEventListener("mouseleave", handleMouseLeave);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, []);
 
