@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import AnimatedSection from "@/components/AnimatedSection";
 import AboutMe from "@/components/AboutMe";
 import Services from "@/components/Services";
+import Industries from "@/components/Industries";
 import FeaturedProjects from "@/components/FeaturedProjects";
 import PortfolioGrid from "@/components/PortfolioGrid";
 import Skills from "@/components/Skills";
@@ -25,6 +26,9 @@ const Index = () => {
       </AnimatedSection>
       <AnimatedSection>
         <Services />
+      </AnimatedSection>
+      <AnimatedSection>
+        <Industries />
       </AnimatedSection>
       <AnimatedSection>
         <FeaturedProjects />
