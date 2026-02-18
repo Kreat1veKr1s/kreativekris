@@ -16,8 +16,11 @@ import Footer from "@/components/Footer";
 import VisitorWidget from "@/components/VisitorWidget";
 import MobileVisitorWidget from "@/components/MobileVisitorWidget";
 import { Helmet } from "react-helmet-async";
+import { usePageTracking } from "@/hooks/usePageTracking";
 
 const Index = () => {
+  usePageTracking();
+
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
