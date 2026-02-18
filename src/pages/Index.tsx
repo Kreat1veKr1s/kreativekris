@@ -5,7 +5,6 @@ import AboutMe from "@/components/AboutMe";
 import Services from "@/components/Services";
 import Industries from "@/components/Industries";
 import FeaturedProjects from "@/components/FeaturedProjects";
-// PortfolioGrid merged into FeaturedProjects
 import Skills from "@/components/Skills";
 import Pricing from "@/components/Pricing";
 import Onboarding from "@/components/Onboarding";
@@ -19,6 +18,10 @@ import Footer from "@/components/Footer";
 import VisitorWidget from "@/components/VisitorWidget";
 import MobileVisitorWidget from "@/components/MobileVisitorWidget";
 import ScrollToTop from "@/components/ScrollToTop";
+import LiveProjectFeed from "@/components/LiveProjectFeed";
+import ProjectTransformations from "@/components/ProjectTransformations";
+import CertBadgeWall from "@/components/CertBadgeWall";
+import ChatWidget from "@/components/ChatWidget";
 import { Helmet } from "react-helmet-async";
 import { usePageTracking } from "@/hooks/usePageTracking";
 
@@ -58,7 +61,12 @@ const Index = () => {
       <VisitorWidget />
       <ScrollToTop />
       <GuidePopup />
+      <ChatWidget />
       <Hero />
+
+      {/* Live activity ticker */}
+      <LiveProjectFeed />
+
       <AnimatedSection>
         <AboutMe />
       </AnimatedSection>
@@ -69,7 +77,6 @@ const Index = () => {
         <Services />
       </AnimatedSection>
 
-      {/* Inline CTA after Services */}
       <InlineCTA
         headline="Want the exact tools I use daily?"
         subtext="Grab the free 2026 toolkit — $300+ worth of AI tools, templates & credits."
@@ -81,17 +88,26 @@ const Index = () => {
       <AnimatedSection>
         <FeaturedProjects />
       </AnimatedSection>
-      {/* PortfolioGrid merged into FeaturedProjects above */}
+
+      {/* Before & After transformations */}
+      <AnimatedSection>
+        <ProjectTransformations />
+      </AnimatedSection>
+
       <AnimatedSection>
         <CreativeGallery />
       </AnimatedSection>
 
-      {/* Inline CTA after Gallery */}
       <InlineCTA
         headline="Stop guessing. Start growing."
         subtext="Get the free playbook with step-by-step strategies that actually convert."
         variant="wide"
       />
+
+      {/* Certification Badge Wall */}
+      <AnimatedSection>
+        <CertBadgeWall />
+      </AnimatedSection>
 
       <AnimatedSection>
         <Pricing />

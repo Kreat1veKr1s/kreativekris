@@ -1,15 +1,63 @@
-import heroBg from "@/assets/hero-bg.jpg";
+import heroVideo from "@/assets/hero-video.mp4";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import MobileVisitorWidget from "@/components/MobileVisitorWidget";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+
+const headlines = [
+  "Moves People",
+  "Drives Growth",
+  "Converts Leads",
+  "Builds Brands",
+];
+
+const useTypewriter = (words: string[], typingSpeed = 80, deletingSpeed = 40, pauseDelay = 2000) => {
+  const [wordIndex, setWordIndex] = useState(0);
+  const [displayed, setDisplayed] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const current = words[wordIndex];
+
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        setDisplayed(current.slice(0, displayed.length + 1));
+        if (displayed.length + 1 === current.length) {
+          setTimeout(() => setIsDeleting(true), pauseDelay);
+        }
+      } else {
+        setDisplayed(current.slice(0, displayed.length - 1));
+        if (displayed.length - 1 === 0) {
+          setIsDeleting(false);
+          setWordIndex((i) => (i + 1) % words.length);
+        }
+      }
+    }, isDeleting ? deletingSpeed : typingSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [displayed, isDeleting, wordIndex, words, typingSpeed, deletingSpeed, pauseDelay]);
+
+  return displayed;
+};
 
 const Hero = () => {
+  const typewriterText = useTypewriter(headlines);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden" role="banner">
-      {/* Background */}
+      {/* Video Background */}
       <div className="absolute inset-0">
-        <img src={heroBg} alt="" className="w-full h-full object-cover opacity-60" />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover opacity-50"
+          aria-hidden="true"
+        >
+          <source src={heroVideo} type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/70 to-background" />
       </div>
 
@@ -23,7 +71,10 @@ const Hero = () => {
 
         <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold font-heading leading-tight mb-4 sm:mb-6 animate-slide-up" style={{ animationDelay: "0.1s" }}>
           Marketing That{" "}
-          <span className="text-gradient">Moves People</span>
+          <span className="text-gradient inline-block min-w-[3ch]">
+            {typewriterText}
+            <span className="animate-pulse text-primary">|</span>
+          </span>
         </h1>
 
         <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-4 animate-slide-up" style={{ animationDelay: "0.2s" }}>
@@ -48,7 +99,7 @@ const Hero = () => {
             { value: "50+", label: "Projects" },
             { value: "8+", label: "Years Experience" },
             { value: "200%", label: "Avg ROI" },
-          ].map((stat, i) => (
+          ].map((stat) => (
             <motion.div
               key={stat.label}
               className="text-center"
