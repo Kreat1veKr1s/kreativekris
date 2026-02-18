@@ -1,30 +1,55 @@
-import { Globe, Megaphone, PenTool, Share2, Palette } from "lucide-react";
+import { Globe, Megaphone, PenTool, Share2, Palette, ImageIcon } from "lucide-react";
 
 const categories = [
   {
     icon: Globe,
     title: "Websites",
-    items: ["Luxe Living Interiors", "Peak Fitness Studio", "GreenLeaf Organics", "Nova Tech Solutions"],
+    items: [
+      { name: "Luxe Living Interiors", hasImage: true },
+      { name: "Peak Fitness Studio", hasImage: true },
+      { name: "GreenLeaf Organics", hasImage: true },
+      { name: "Nova Tech Solutions", hasImage: true },
+    ],
   },
   {
     icon: Megaphone,
     title: "Ads",
-    items: ["Summit Financial – Google Ads", "FreshBite – Meta Ads", "AutoPro Dealers – PPC", "Bloom Beauty – TikTok Ads"],
+    items: [
+      { name: "Summit Financial – Google Ads", hasImage: true },
+      { name: "FreshBite – Meta Ads", hasImage: true },
+      { name: "AutoPro Dealers – PPC", hasImage: true },
+      { name: "Bloom Beauty – TikTok Ads", hasImage: true },
+    ],
   },
   {
     icon: Palette,
     title: "Branding",
-    items: ["FreshBite Brand Identity", "Nova Tech Logo Suite", "Bloom Beauty Rebrand", "Summit Financial Guidelines"],
+    items: [
+      { name: "FreshBite Brand Identity", hasImage: true },
+      { name: "Nova Tech Logo Suite", hasImage: true },
+      { name: "Bloom Beauty Rebrand", hasImage: true },
+      { name: "Summit Financial Guidelines", hasImage: true },
+    ],
   },
   {
     icon: Share2,
     title: "Social Media",
-    items: ["FreshBite Instagram Growth", "Peak Fitness TikTok", "GreenLeaf Pinterest", "AutoPro Facebook Strategy"],
+    items: [
+      { name: "FreshBite Instagram Growth", hasImage: true },
+      { name: "Peak Fitness TikTok", hasImage: true },
+      { name: "GreenLeaf Pinterest", hasImage: true },
+      { name: "AutoPro Facebook Strategy", hasImage: true },
+    ],
   },
   {
     icon: PenTool,
     title: "Content Creation",
-    items: ["Luxe Living Blog Series", "Summit Financial Whitepapers", "FreshBite Recipe Videos", "Nova Tech Case Studies"],
+    items: [
+      { name: "Luxe Living Blog Series", hasImage: true },
+      { name: "Summit Financial Whitepapers", hasImage: true },
+      { name: "FreshBite Recipe Videos", hasImage: true },
+      { name: "Nova Tech Case Studies", hasImage: true },
+    ],
   },
 ];
 
@@ -50,9 +75,15 @@ const PortfolioGrid = () => {
               </div>
               <ul className="space-y-3">
                 {cat.items.map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-sm text-muted-foreground group/item cursor-pointer hover:text-foreground transition-colors">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover/item:bg-primary transition-colors" />
-                    {item}
+                  <li key={item.name} className="group/item cursor-pointer">
+                    {/* Thumbnail placeholder */}
+                    <div className="aspect-[16/9] w-full rounded-md bg-muted/40 border border-dashed border-border/50 flex items-center justify-center mb-2 group-hover/item:border-primary/30 group-hover/item:bg-muted/60 transition-all duration-300">
+                      <ImageIcon className="w-5 h-5 text-muted-foreground/50 group-hover/item:text-primary/60 transition-colors" />
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground group-hover/item:text-foreground transition-colors">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover/item:bg-primary transition-colors shrink-0" />
+                      {item.name}
+                    </div>
                   </li>
                 ))}
               </ul>

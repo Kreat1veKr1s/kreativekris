@@ -11,6 +11,7 @@ import Pricing from "@/components/Pricing";
 import Onboarding from "@/components/Onboarding";
 import CustomPlan from "@/components/CustomPlan";
 import Tools from "@/components/Tools";
+import CreativeGallery from "@/components/CreativeGallery";
 import ContactCTA from "@/components/ContactCTA";
 import Footer from "@/components/Footer";
 
@@ -31,6 +32,10 @@ const Index = () => {
       <AnimatedSection>
         <PortfolioGrid />
       </AnimatedSection>
+      <AnimatedSection>
+        <CreativeGallery />
+      </AnimatedSection>
+      
       <AnimatedSection>
         <Skills />
       </AnimatedSection>
