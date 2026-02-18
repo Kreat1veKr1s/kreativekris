@@ -31,6 +31,7 @@ const Onboarding = () => {
             3-Step <span className="text-gradient">Onboarding</span>
           </h2>
           <p className="text-muted-foreground mt-4">Easy onboarding, fast setup</p>
+          <p className="text-xs text-muted-foreground/60 mt-2 italic">Brands that launch campaigns within 2 weeks see 47% higher first-month engagement — WordStream, 2026</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

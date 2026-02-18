@@ -23,8 +23,11 @@ const Hero = () => {
           <span className="text-gradient">Moves People</span>
         </h1>
 
-        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-slide-up" style={{ animationDelay: "0.2s" }}>
+        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-4 animate-slide-up" style={{ animationDelay: "0.2s" }}>
           Strategist. Creator. Optimizer. I craft data-driven campaigns, build high-converting websites, and grow brands through compelling content and smart advertising.
+        </p>
+        <p className="text-sm text-muted-foreground/70 max-w-xl mx-auto mb-10 animate-slide-up italic" style={{ animationDelay: "0.25s" }}>
+          In 2026, global digital ad spend will surpass <span className="text-primary font-medium">$870 billion</span> — is your brand capturing its share?
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up" style={{ animationDelay: "0.3s" }}>
