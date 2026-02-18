@@ -12,6 +12,7 @@ import Pricing from "@/components/Pricing";
 import Onboarding from "@/components/Onboarding";
 import CustomPlan from "@/components/CustomPlan";
 import Tools from "@/components/Tools";
+import Certifications from "@/components/Certifications";
 import CreativeGallery from "@/components/CreativeGallery";
 import ContactCTA from "@/components/ContactCTA";
 import Footer from "@/components/Footer";
@@ -42,6 +43,9 @@ const Index = () => {
       
       <AnimatedSection>
         <Skills />
+      </AnimatedSection>
+      <AnimatedSection>
+        <Certifications />
       </AnimatedSection>
       <AnimatedSection>
         <Testimonials />
