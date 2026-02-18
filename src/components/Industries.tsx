@@ -1,5 +1,4 @@
 import { ShoppingBag, Sparkles, Store, Coffee, Wrench, Music, Heart, Cpu, Rocket, DollarSign, User, Building, Briefcase, GlassWater } from "lucide-react";
-import { motion } from "framer-motion";
 
 const industries = [
   { icon: ShoppingBag, name: "E-Commerce" },
@@ -18,38 +17,34 @@ const industries = [
   { icon: Briefcase, name: "Professional Services" },
 ];
 
+// Duplicate for seamless loop
+const doubled = [...industries, ...industries];
+
 const Industries = () => {
   return (
-    <section className="section-padding" aria-label="Industries served">
-      <div className="container max-w-4xl">
-        <div className="text-center mb-12">
+    <section className="section-padding py-10 md:py-16" aria-label="Industries served">
+      <div className="container max-w-5xl">
+        <div className="text-center mb-8">
           <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-3">Industries</p>
-          <h2 className="text-4xl md:text-5xl font-bold font-heading">
+          <h2 className="text-3xl md:text-4xl font-bold font-heading">
             Who I <span className="text-gradient">Work With</span>
           </h2>
-          <p className="text-muted-foreground mt-4 max-w-lg mx-auto">
-            Proven experience growing brands across diverse industries.
-          </p>
-          <p className="text-xs text-muted-foreground/60 mt-2 italic max-w-md mx-auto">
-            "By 2026, 72% of SMBs consider digital marketing their top growth lever." — HubSpot
-          </p>
         </div>
 
-        <div className="glass rounded-2xl p-6 md:p-8">
-          <div className="flex flex-wrap justify-center gap-3">
-            {industries.map((ind, i) => (
-              <motion.div
-                key={ind.name}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: i * 0.03 }}
-                whileHover={{ scale: 1.08, transition: { duration: 0.15 } }}
-                className="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-secondary/50 border border-border/30 hover:border-primary/40 hover:bg-primary/10 transition-all duration-300 cursor-default group"
+        {/* Marquee */}
+        <div className="relative overflow-hidden">
+          <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-background to-transparent z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-background to-transparent z-10" />
+          
+          <div className="flex gap-3 animate-marquee">
+            {doubled.map((ind, i) => (
+              <div
+                key={`${ind.name}-${i}`}
+                className="flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 border border-border/30 hover:border-primary/40 hover:bg-primary/10 transition-all duration-300 whitespace-nowrap shrink-0"
               >
-                <ind.icon className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">{ind.name}</span>
-              </motion.div>
+                <ind.icon className="w-4 h-4 text-muted-foreground" />
+                <span className="text-sm font-medium text-muted-foreground">{ind.name}</span>
+              </div>
             ))}
           </div>
         </div>
