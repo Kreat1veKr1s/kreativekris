@@ -45,11 +45,36 @@ const projects = [
 ];
 
 const portfolioCategories = [
-  { icon: Globe, title: "Websites", items: ["Luxe Living Interiors", "Peak Fitness Studio", "GreenLeaf Organics", "Nova Tech Solutions"] },
-  { icon: Megaphone, title: "Ads", items: ["Summit Financial – Google Ads", "FreshBite – Meta Ads", "AutoPro Dealers – PPC", "Bloom Beauty – TikTok Ads"] },
-  { icon: Palette, title: "Branding", items: ["FreshBite Brand Identity", "Nova Tech Logo Suite", "Bloom Beauty Rebrand", "Summit Financial Guidelines"] },
-  { icon: Share2, title: "Social Media", items: ["FreshBite Instagram Growth", "Peak Fitness TikTok", "GreenLeaf Pinterest", "AutoPro Facebook Strategy"] },
-  { icon: PenTool, title: "Content", items: ["Luxe Living Blog Series", "Summit Financial Whitepapers", "FreshBite Recipe Videos", "Nova Tech Case Studies"] },
+  { icon: Globe, title: "Websites", items: [
+    { name: "Luxe Living Interiors", aspect: "landscape" },
+    { name: "Peak Fitness Studio", aspect: "landscape" },
+    { name: "GreenLeaf Organics", aspect: "landscape" },
+    { name: "Nova Tech Solutions", aspect: "landscape" },
+  ]},
+  { icon: Megaphone, title: "Ads", items: [
+    { name: "Summit Financial – Google Ads", aspect: "square" },
+    { name: "FreshBite – Meta Ads", aspect: "square" },
+    { name: "AutoPro Dealers – PPC", aspect: "square" },
+    { name: "Bloom Beauty – TikTok Ads", aspect: "portrait" },
+  ]},
+  { icon: Palette, title: "Branding", items: [
+    { name: "FreshBite Brand Identity", aspect: "square" },
+    { name: "Nova Tech Logo Suite", aspect: "square" },
+    { name: "Bloom Beauty Rebrand", aspect: "square" },
+    { name: "Summit Financial Guidelines", aspect: "landscape" },
+  ]},
+  { icon: Share2, title: "Social Media", items: [
+    { name: "FreshBite Instagram Growth", aspect: "portrait" },
+    { name: "Peak Fitness TikTok", aspect: "portrait" },
+    { name: "GreenLeaf Pinterest", aspect: "portrait" },
+    { name: "AutoPro Facebook Strategy", aspect: "square" },
+  ]},
+  { icon: PenTool, title: "Content", items: [
+    { name: "Luxe Living Blog Series", aspect: "landscape" },
+    { name: "Summit Financial Whitepapers", aspect: "landscape" },
+    { name: "FreshBite Recipe Videos", aspect: "landscape" },
+    { name: "Nova Tech Case Studies", aspect: "landscape" },
+  ]},
 ];
 
 const ImagePlaceholder = ({ label, aspect }: { label: string; aspect: string }) => {
@@ -160,11 +185,15 @@ const FeaturedProjects = () => {
                     </div>
                   </AccordionTrigger>
                   <AccordionContent>
-                    <div className="grid grid-cols-2 gap-2 pt-1 pb-1">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 pb-1">
                       {cat.items.map((item) => (
-                        <div key={item} className="group/item cursor-pointer flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-primary/5 transition-colors">
-                          <ImageIcon className="w-4 h-4 text-muted-foreground/40 group-hover/item:text-primary/60 transition-colors shrink-0" />
-                          <span className="text-sm text-muted-foreground group-hover/item:text-foreground transition-colors">{item}</span>
+                        <div key={item.name} className="group/item cursor-pointer flex flex-col gap-2 rounded-lg hover:bg-primary/5 transition-colors p-1.5">
+                          <div className={`w-full rounded-lg bg-muted/50 border-2 border-dashed border-border/60 flex flex-col items-center justify-center gap-1.5 hover:border-primary/40 hover:bg-muted/70 transition-all duration-300 ${item.aspect === "portrait" ? "aspect-[3/4]" : item.aspect === "square" ? "aspect-square" : "aspect-video"}`}>
+                            <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center">
+                              <ImageIcon className="w-3.5 h-3.5 text-muted-foreground/50" />
+                            </div>
+                          </div>
+                          <span className="text-xs text-muted-foreground group-hover/item:text-foreground transition-colors text-center leading-tight font-medium">{item.name}</span>
                         </div>
                       ))}
                     </div>

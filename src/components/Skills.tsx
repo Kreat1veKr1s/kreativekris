@@ -1,4 +1,4 @@
-import { Award, ExternalLink, ImageIcon } from "lucide-react";
+import { Award, ExternalLink } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const skillCategories = [
@@ -94,47 +94,45 @@ const Skills = () => {
           </Accordion>
         </div>
 
-        {/* Certifications */}
-        <div>
-          <h3 className="text-center font-heading text-2xl font-bold text-foreground mb-6">
+        {/* Certifications — Accordion */}
+        <div className="glass rounded-2xl p-6 md:p-8">
+          <h3 className="font-heading text-xl font-bold text-foreground mb-4">
             Verified <span className="text-gradient">Credentials</span>
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <Accordion type="single" collapsible className="space-y-1">
             {certifications.map((cert) => (
-              <div
-                key={cert.title}
-                className="glass rounded-2xl overflow-hidden card-hover group"
-              >
-                <div className="aspect-video w-full bg-muted/30 border-b border-border/30 flex items-center justify-center">
-                  <div className="flex flex-col items-center gap-2 text-muted-foreground/40">
-                    <ImageIcon className="w-10 h-10" />
-                    <span className="text-xs font-medium">Upload certificate image</span>
-                  </div>
-                </div>
-                <div className="p-5 flex items-start justify-between gap-3">
-                  <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-primary/20 transition-colors">
-                      <Award className="w-5 h-5 text-primary" />
+              <AccordionItem key={cert.title} value={cert.title} className="border-border/30">
+                <AccordionTrigger className="hover:no-underline py-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                      <Award className="w-4 h-4 text-primary" />
                     </div>
+                    <div className="text-left">
+                      <span className="font-heading font-semibold text-sm text-foreground">{cert.title}</span>
+                      <span className="text-xs text-muted-foreground ml-2">({cert.year})</span>
+                    </div>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent>
+                  <div className="flex items-center justify-between pl-11 pt-1 pb-1">
                     <div>
-                      <h4 className="font-heading font-semibold text-foreground leading-tight">{cert.title}</h4>
-                      <p className="text-sm text-muted-foreground mt-1">{cert.issuer}</p>
-                      <span className="text-xs text-primary/70 font-medium">{cert.year}</span>
+                      <p className="text-sm text-muted-foreground">{cert.issuer}</p>
                     </div>
+                    <a
+                      href={cert.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 text-xs font-medium text-primary hover:text-primary/80 transition-colors"
+                      aria-label={`View ${cert.title} certification`}
+                    >
+                      <ExternalLink className="w-3.5 h-3.5" />
+                      View Certificate
+                    </a>
                   </div>
-                  <a
-                    href={cert.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-8 h-8 rounded-full bg-secondary/50 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all shrink-0 mt-0.5"
-                    aria-label={`View ${cert.title} certification`}
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
-                </div>
-              </div>
+                </AccordionContent>
+              </AccordionItem>
             ))}
-          </div>
+          </Accordion>
         </div>
       </div>
     </section>
