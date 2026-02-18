@@ -1,3 +1,5 @@
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+
 const skillCategories = [
   {
     title: "Web & Development",
@@ -28,30 +30,39 @@ const skillCategories = [
 const Skills = () => {
   return (
     <section id="skills" className="section-padding bg-surface/50">
-      <div className="container max-w-6xl">
-        <div className="text-center mb-16">
+      <div className="container max-w-4xl">
+        <div className="text-center mb-12">
           <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-3">Skills</p>
           <h2 className="text-4xl md:text-5xl font-bold font-heading">
             Full-Stack <span className="text-gradient">Marketer</span>
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skillCategories.map((cat) => (
-            <div key={cat.title} className="glass rounded-xl p-6">
-              <h3 className="font-heading font-semibold text-foreground mb-4 pb-3 border-b border-border/50">{cat.title}</h3>
-              <div className="flex flex-wrap gap-2">
-                {cat.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-3 py-1.5 text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/10 hover:border-primary/30 hover:bg-primary/15 transition-all cursor-default"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
+        <div className="glass rounded-2xl p-6 md:p-8">
+          <Accordion type="multiple" defaultValue={["Web & Development"]} className="space-y-2">
+            {skillCategories.map((cat) => (
+              <AccordionItem key={cat.title} value={cat.title} className="border-border/30">
+                <AccordionTrigger className="hover:no-underline py-4">
+                  <div className="flex items-center gap-2">
+                    <span className="font-heading font-semibold text-foreground">{cat.title}</span>
+                    <span className="text-xs text-muted-foreground">({cat.skills.length})</span>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent>
+                  <div className="flex flex-wrap gap-2 pt-2 pb-1">
+                    {cat.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="px-3 py-1.5 text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/10 hover:border-primary/30 hover:bg-primary/15 transition-all cursor-default"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </div>
     </section>
