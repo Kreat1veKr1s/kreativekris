@@ -37,9 +37,24 @@ const VisitorWidget = () => {
   useEffect(() => {
     const fetchVisitorData = async () => {
       try {
-        // Get location via free IP geolocation
-        const geoRes = await fetch("https://ipapi.co/json/");
-        const geo = await geoRes.json();
+        // Try multiple geolocation providers for reliability
+        let geo: any = null;
+        try {
+          const geoRes = await fetch("https://ipapi.co/json/");
+          if (geoRes.ok) geo = await geoRes.json();
+        } catch {}
+
+        if (!geo || geo.error) {
+          try {
+            const geoRes2 = await fetch("https://get.geojs.io/v1/ip/geo.json");
+            if (geoRes2.ok) {
+              const g = await geoRes2.json();
+              geo = { city: g.city, region: g.region, country_name: g.country, latitude: g.latitude, longitude: g.longitude, timezone: g.timezone };
+            }
+          } catch {}
+        }
+
+        if (!geo || (!geo.city && !geo.latitude)) throw new Error("No geo data");
 
         const city = geo.city || "Your City";
         const region = geo.region || "";
