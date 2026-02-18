@@ -3,9 +3,9 @@ import { ArrowRight, Mail, Calendar } from "lucide-react";
 
 const ContactCTA = () => {
   return (
-    <section id="contact" className="section-padding">
+    <section id="contact" className="section-padding pb-8 md:pb-12">
       <div className="container max-w-4xl">
-        <div className="glass rounded-2xl p-10 md:p-16 text-center relative overflow-hidden">
+        <div className="glass rounded-2xl p-8 md:p-16 text-center relative overflow-hidden">
           {/* Glow accent */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-1 bg-gradient-to-r from-transparent via-primary to-transparent" />
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-32 bg-primary/10 rounded-full blur-3xl" />
