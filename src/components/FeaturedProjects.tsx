@@ -2,6 +2,8 @@ import { ExternalLink, TrendingUp, ImageIcon, ChevronLeft, ChevronRight } from "
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Globe, Megaphone, Palette, Share2, PenTool } from "lucide-react";
 
 const projects = [
   {
@@ -42,6 +44,13 @@ const projects = [
   },
 ];
 
+const portfolioCategories = [
+  { icon: Globe, title: "Websites", items: ["Luxe Living Interiors", "Peak Fitness Studio", "GreenLeaf Organics", "Nova Tech Solutions"] },
+  { icon: Megaphone, title: "Ads", items: ["Summit Financial – Google Ads", "FreshBite – Meta Ads", "AutoPro Dealers – PPC", "Bloom Beauty – TikTok Ads"] },
+  { icon: Palette, title: "Branding", items: ["FreshBite Brand Identity", "Nova Tech Logo Suite", "Bloom Beauty Rebrand", "Summit Financial Guidelines"] },
+  { icon: Share2, title: "Social Media", items: ["FreshBite Instagram Growth", "Peak Fitness TikTok", "GreenLeaf Pinterest", "AutoPro Facebook Strategy"] },
+  { icon: PenTool, title: "Content", items: ["Luxe Living Blog Series", "Summit Financial Whitepapers", "FreshBite Recipe Videos", "Nova Tech Case Studies"] },
+];
 
 const ImagePlaceholder = ({ label, aspect }: { label: string; aspect: string }) => {
   const aspectClass = aspect === "portrait" ? "aspect-[3/4]" : aspect === "square" ? "aspect-square" : "aspect-video";
@@ -131,6 +140,41 @@ const FeaturedProjects = () => {
             ))}
           </div>
         </div>
+
+        {/* Portfolio by Category — Accordion */}
+        <div className="mt-10">
+          <h3 className="text-center font-heading text-xl font-bold text-foreground mb-5">
+            Work by <span className="text-gradient">Category</span>
+          </h3>
+          <div className="glass rounded-2xl p-5 md:p-6">
+            <Accordion type="single" collapsible className="space-y-1">
+              {portfolioCategories.map((cat) => (
+                <AccordionItem key={cat.title} value={cat.title} className="border-border/30">
+                  <AccordionTrigger className="hover:no-underline py-3">
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                        <cat.icon className="w-4 h-4 text-primary" />
+                      </div>
+                      <span className="font-heading font-semibold text-sm text-foreground">{cat.title}</span>
+                      <span className="text-xs text-muted-foreground">({cat.items.length})</span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <div className="grid grid-cols-2 gap-2 pt-1 pb-1">
+                      {cat.items.map((item) => (
+                        <div key={item} className="group/item cursor-pointer flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-primary/5 transition-colors">
+                          <ImageIcon className="w-4 h-4 text-muted-foreground/40 group-hover/item:text-primary/60 transition-colors shrink-0" />
+                          <span className="text-sm text-muted-foreground group-hover/item:text-foreground transition-colors">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </div>
+      </div>
     </section>
   );
 };
