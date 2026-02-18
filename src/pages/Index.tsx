@@ -7,12 +7,9 @@ import Industries from "@/components/Industries";
 import FeaturedProjects from "@/components/FeaturedProjects";
 import PortfolioGrid from "@/components/PortfolioGrid";
 import Skills from "@/components/Skills";
-import Testimonials from "@/components/Testimonials";
 import Pricing from "@/components/Pricing";
 import Onboarding from "@/components/Onboarding";
 import CustomPlan from "@/components/CustomPlan";
-import Tools from "@/components/Tools";
-import Certifications from "@/components/Certifications";
 import CreativeGallery from "@/components/CreativeGallery";
 import ContactCTA from "@/components/ContactCTA";
 import Footer from "@/components/Footer";
@@ -40,15 +37,8 @@ const Index = () => {
       <AnimatedSection>
         <CreativeGallery />
       </AnimatedSection>
-      
       <AnimatedSection>
         <Skills />
-      </AnimatedSection>
-      <AnimatedSection>
-        <Certifications />
-      </AnimatedSection>
-      <AnimatedSection>
-        <Testimonials />
       </AnimatedSection>
       <AnimatedSection>
         <Pricing />
@@ -58,9 +48,6 @@ const Index = () => {
       </AnimatedSection>
       <AnimatedSection>
         <CustomPlan />
-      </AnimatedSection>
-      <AnimatedSection>
-        <Tools />
       </AnimatedSection>
       <AnimatedSection>
         <ContactCTA />
