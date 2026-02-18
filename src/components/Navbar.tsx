@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Sparkles } from "lucide-react";
 
 const navItems = [
+  { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Projects", href: "#projects" },
   { label: "Portfolio", href: "#portfolio" },
