@@ -270,12 +270,12 @@ const AboutMe = () => {
             <div className="glass rounded-2xl p-6 md:p-8 relative overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-[hsl(var(--glow-warm))] to-primary" />
               
-              <h3 className="font-heading text-2xl font-bold text-foreground mb-4">Hi, I'm a Creative Marketing Specialist 👋
-
+              <h3 className="font-heading text-2xl font-bold text-foreground mb-4">
+                Hi, I'm a Creative Marketing Strategist 👋
               </h3>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p>As a full-stack marketer who combines creative vision with data-driven strategy to help brands grow, convert, and dominate their markets.
-                  <span className="text-primary font-medium">creative touch </span> with 
+                <p>Combining .creative touch with data-driven strategy to help brands grow, convert, and dominate their markets.
+                  <span className="text-primary font-medium">creative vision</span> with 
                   <span className="text-primary font-medium"> data-driven strategy</span> to help brands grow, convert, and dominate their markets.
                 </p>
                 <p>
@@ -285,9 +285,9 @@ const AboutMe = () => {
                 </p>
                 <p>
                   Whether you're a startup looking to launch or an established brand ready to scale, 
-                  I bring the <span className="text-primary font-medium">strategy, style, and execution</span> to make it happen.
+                  I bring the <span className="text-primary font-medium">strategy, creativity, and execution</span> to make it happen.
                 </p>
-                <blockquote className="border-l-2 border-primary/40 pl-4 text-sm italic mt-2 text-accent">
+                <blockquote className="border-l-2 border-primary/40 pl-4 text-sm italic text-muted-foreground/80 mt-2">
                   "94% of organizations say influencer & content marketing outperforms traditional digital ads in 2026." — Sprout Social
                 </blockquote>
               </div>
