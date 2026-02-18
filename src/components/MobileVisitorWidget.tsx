@@ -13,9 +13,24 @@ const MobileVisitorWidget = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const geoRes = await fetch("https://ipapi.co/json/");
-        const geo = await geoRes.json();
-        setCity(geo.city || "Your City");
+        let geo: any = null;
+        try {
+          const geoRes = await fetch("https://ipapi.co/json/");
+          if (geoRes.ok) geo = await geoRes.json();
+        } catch {}
+
+        if (!geo || geo.error) {
+          try {
+            const geoRes2 = await fetch("https://get.geojs.io/v1/ip/geo.json");
+            if (geoRes2.ok) {
+              const g = await geoRes2.json();
+              geo = { city: g.city, latitude: g.latitude, longitude: g.longitude };
+            }
+          } catch {}
+        }
+
+        if (!geo || !geo.city) throw new Error("No geo");
+        setCity(geo.city);
 
         const weatherRes = await fetch(
           `https://api.open-meteo.com/v1/forecast?latitude=${geo.latitude}&longitude=${geo.longitude}&current=temperature_2m,weather_code&temperature_unit=fahrenheit`
