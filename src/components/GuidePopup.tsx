@@ -93,14 +93,14 @@ const GuidePopup = () => {
 
   return (
     <AnimatePresence>
-      {visible && !subscribed && (
-        <motion.div
-          initial={{ opacity: 0, y: 60, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: 60, scale: 0.95 }}
-          transition={{ type: "spring", damping: 25, stiffness: 300 }}
-          className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 sm:w-[380px] z-50"
-        >
+      {visible && !subscribed &&
+      <motion.div
+        initial={{ opacity: 0, y: 60, scale: 0.95 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 60, scale: 0.95 }}
+        transition={{ type: "spring", damping: 25, stiffness: 300 }}
+        className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 sm:w-[380px] z-50">
+
           <div className="glass rounded-2xl p-5 shadow-2xl border border-primary/20 relative overflow-hidden">
             {/* Glow accent */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent" />
@@ -108,10 +108,10 @@ const GuidePopup = () => {
 
             {/* Close */}
             <button
-              onClick={dismiss}
-              className="absolute top-3 right-3 w-7 h-7 rounded-full bg-secondary/80 hover:bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors z-10"
-              aria-label="Dismiss"
-            >
+            onClick={dismiss}
+            className="absolute top-3 right-3 w-7 h-7 rounded-full bg-secondary/80 hover:bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors z-10"
+            aria-label="Dismiss">
+
               <X className="w-3.5 h-3.5" />
             </button>
 
@@ -127,7 +127,7 @@ const GuidePopup = () => {
               </div>
 
               <h3 className="font-heading font-bold text-base text-foreground mb-1">
-                Don't leave without your unfair advantage
+                Don't leave without your goodie bag
               </h3>
               <p className="text-xs text-muted-foreground mb-3 leading-relaxed">
                 Get the 2026 No-BS Growth Toolkit — premium tools, free credits & battle-tested playbooks.
@@ -141,14 +141,14 @@ const GuidePopup = () => {
 
               <form onSubmit={handleSubscribe} className="flex gap-2">
                 <Input
-                  type="email"
-                  placeholder="you@example.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  maxLength={255}
-                  className="h-9 bg-background/60 border-border/50 text-sm flex-1"
-                />
+                type="email"
+                placeholder="you@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                maxLength={255}
+                className="h-9 bg-background/60 border-border/50 text-sm flex-1" />
+
                 <Button type="submit" variant="hero" size="sm" disabled={loading} className="shrink-0 text-xs">
                   {loading ? "…" : "Get It Free →"}
                 </Button>
@@ -160,15 +160,15 @@ const GuidePopup = () => {
             </div>
           </div>
         </motion.div>
-      )}
+      }
 
-      {visible && subscribed && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.9 }}
-          className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 sm:w-[380px] z-50"
-        >
+      {visible && subscribed &&
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.9 }}
+        className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 sm:w-[380px] z-50">
+
           <div className="glass rounded-2xl p-5 shadow-2xl border border-primary/20 text-center">
             <CheckCircle className="w-10 h-10 text-primary mx-auto mb-2" />
             <p className="font-heading font-bold text-sm text-foreground">You're on the list!</p>
@@ -176,9 +176,9 @@ const GuidePopup = () => {
             <Button variant="ghost" size="sm" className="mt-3 text-xs" onClick={dismiss}>Close</Button>
           </div>
         </motion.div>
-      )}
-    </AnimatePresence>
-  );
+      }
+    </AnimatePresence>);
+
 };
 
 export default GuidePopup;
