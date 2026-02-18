@@ -209,36 +209,36 @@ const AboutMe = () => {
   return (
     <section id="about" className="section-padding">
       <div className="container max-w-6xl">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-3">About Me</p>
-          <h2 className="text-4xl md:text-5xl font-bold font-heading">
+          <h2 className="text-3xl md:text-5xl font-bold font-heading">
             The <span className="text-gradient">Marketer</span> Behind the Work
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           {/* Bio side */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6 }}
-            className="space-y-6"
+            className="space-y-5"
           >
             {/* Profile Photo Block */}
-            <div className="glass rounded-2xl p-6 relative overflow-hidden">
+            <div className="glass rounded-2xl p-5 md:p-6 relative overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-[hsl(var(--glow-warm))] to-primary" />
               
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col sm:flex-row items-center gap-5">
                 <div
                   onClick={() => fileInputRef.current?.click()}
-                  className="relative w-40 h-40 rounded-2xl border-2 border-dashed border-primary/30 hover:border-primary/60 transition-colors cursor-pointer group overflow-hidden bg-primary/5 mb-5"
+                  className="relative w-32 h-32 md:w-40 md:h-40 rounded-2xl border-2 border-dashed border-primary/30 hover:border-primary/60 transition-colors cursor-pointer group overflow-hidden bg-primary/5 shrink-0"
                 >
                   {profileImage ? (
                     <img src={profileImage} alt="Profile" className="w-full h-full object-cover" />
                   ) : (
                     <div className="flex flex-col items-center justify-center h-full text-muted-foreground group-hover:text-primary transition-colors">
-                      <Camera className="w-8 h-8 mb-2" />
+                      <Camera className="w-7 h-7 mb-1.5" />
                       <span className="text-xs font-medium">Upload Photo</span>
                     </div>
                   )}
@@ -252,13 +252,13 @@ const AboutMe = () => {
                 </div>
 
                 {/* Highlight Badges */}
-                <div className="flex flex-wrap justify-center gap-2">
+                <div className="flex flex-wrap justify-center sm:justify-start gap-1.5">
                   {profileBadges.map((badge) => (
                     <div
                       key={badge.label}
-                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-xs font-medium text-primary"
+                      className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary/10 border border-primary/20 text-[11px] font-medium text-primary"
                     >
-                      <badge.icon className="w-3.5 h-3.5" />
+                      <badge.icon className="w-3 h-3" />
                       <span>{badge.label}</span>
                     </div>
                   ))}
@@ -267,7 +267,7 @@ const AboutMe = () => {
             </div>
 
             {/* Bio Card */}
-            <div className="glass rounded-2xl p-8 relative overflow-hidden">
+            <div className="glass rounded-2xl p-6 md:p-8 relative overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-[hsl(var(--glow-warm))] to-primary" />
               
               <h3 className="font-heading text-2xl font-bold text-foreground mb-4">
@@ -335,7 +335,7 @@ const AboutMe = () => {
         </div>
 
         {/* Social Proof / Testimonials Carousel */}
-        <div className="mt-16">
+        <div className="mt-10 md:mt-16">
           <h3 className="text-center font-heading text-2xl font-bold text-foreground mb-2">
             What Clients <span className="text-gradient">Say</span>
           </h3>
@@ -343,7 +343,7 @@ const AboutMe = () => {
             92% of consumers trust peer recommendations over brand advertising — Nielsen, 2026
           </p>
 
-          <div className="glass rounded-2xl p-8 md:p-12 relative">
+          <div className="glass rounded-2xl p-6 md:p-12 relative">
             <button
               onClick={prev}
               className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-secondary/80 hover:bg-secondary flex items-center justify-center text-foreground transition-colors z-10"
@@ -357,7 +357,7 @@ const AboutMe = () => {
               <ChevronRight className="w-5 h-5" />
             </button>
 
-            <div className="text-center px-8">
+            <div className="text-center px-4 md:px-8">
               <div className="flex items-center justify-center gap-4 mb-6">
                 <StarRating rating={t.rating} />
                 <a
@@ -402,7 +402,7 @@ const AboutMe = () => {
         </div>
 
         {/* Toolkit */}
-        <div className="mt-16">
+        <div className="mt-10 md:mt-16">
           <h3 className="text-center font-heading text-2xl font-bold text-foreground mb-8">
             My <span className="text-gradient">Toolkit</span>
           </h3>
