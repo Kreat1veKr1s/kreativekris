@@ -274,7 +274,7 @@ const AboutMe = () => {
                 Hi, I'm a Creative Marketing Strategist 👋
               </h3>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p>Combining .creative touch with data-driven strategy to help brands grow, convert, and dominate their markets.
+                <p>Combining .creacreative vision with data-driven strategy to help brands grow, convert, and dominate their markets.
                   <span className="text-primary font-medium">creative vision</span> with 
                   <span className="text-primary font-medium"> data-driven strategy</span> to help brands grow, convert, and dominate their markets.
                 </p>
