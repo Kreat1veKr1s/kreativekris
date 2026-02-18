@@ -11,6 +11,7 @@ import Pricing from "@/components/Pricing";
 import Onboarding from "@/components/Onboarding";
 import CustomPlan from "@/components/CustomPlan";
 import CreativeGallery from "@/components/CreativeGallery";
+import LeadMagnet from "@/components/LeadMagnet";
 import ContactCTA from "@/components/ContactCTA";
 import Footer from "@/components/Footer";
 import VisitorWidget from "@/components/VisitorWidget";
@@ -82,6 +83,9 @@ const Index = () => {
       </AnimatedSection>
       <AnimatedSection>
         <CustomPlan />
+      </AnimatedSection>
+      <AnimatedSection>
+        <LeadMagnet />
       </AnimatedSection>
       <AnimatedSection>
         <ContactCTA />

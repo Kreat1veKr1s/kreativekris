@@ -31,7 +31,7 @@ const LeadMagnet = () => {
 
     setLoading(true);
     try {
-      const { error } = await supabase.from("subscribers").insert({ email: trimmed });
+      const { error } = await supabase.from("subscribers" as any).insert({ email: trimmed });
       if (error) {
         if (error.code === "23505") {
           toast({ title: "You're already subscribed! Check your inbox 📬" });
