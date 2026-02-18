@@ -13,6 +13,8 @@ import CustomPlan from "@/components/CustomPlan";
 import CreativeGallery from "@/components/CreativeGallery";
 import LeadMagnet from "@/components/LeadMagnet";
 import ContactCTA from "@/components/ContactCTA";
+import InlineCTA from "@/components/InlineCTA";
+import GuidePopup from "@/components/GuidePopup";
 import Footer from "@/components/Footer";
 import VisitorWidget from "@/components/VisitorWidget";
 import MobileVisitorWidget from "@/components/MobileVisitorWidget";
@@ -55,6 +57,7 @@ const Index = () => {
       <Navbar />
       <VisitorWidget />
       <ScrollToTop />
+      <GuidePopup />
       <Hero />
       <AnimatedSection>
         <AboutMe />
@@ -65,6 +68,13 @@ const Index = () => {
       <AnimatedSection>
         <Services />
       </AnimatedSection>
+
+      {/* Inline CTA after Services */}
+      <InlineCTA
+        headline="Want the exact tools I use daily?"
+        subtext="Grab the free 2026 toolkit — $300+ worth of AI tools, templates & credits."
+      />
+
       <AnimatedSection>
         <Industries />
       </AnimatedSection>
@@ -75,6 +85,14 @@ const Index = () => {
       <AnimatedSection>
         <CreativeGallery />
       </AnimatedSection>
+
+      {/* Inline CTA after Gallery */}
+      <InlineCTA
+        headline="Stop guessing. Start growing."
+        subtext="Get the free playbook with step-by-step strategies that actually convert."
+        variant="wide"
+      />
+
       <AnimatedSection>
         <Pricing />
       </AnimatedSection>
