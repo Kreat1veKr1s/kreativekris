@@ -21,7 +21,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "glass py-3" : "py-5"}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "glass py-3" : "py-4 md:py-5"}`} role="navigation" aria-label="Main navigation">
       <div className="container max-w-6xl flex items-center justify-between px-6">
         <a href="#" className="flex items-center gap-2 font-heading font-bold text-lg text-foreground">
           <Sparkles className="w-5 h-5 text-primary" />

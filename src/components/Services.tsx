@@ -1,4 +1,5 @@
 import { Globe, Megaphone, Palette, Share2, PenTool, Search, MapPin, BarChart3 } from "lucide-react";
+import { motion } from "framer-motion";
 
 const services = [
   { icon: Globe, title: "Websites & Landing Pages", desc: "High-converting sites built for performance and results", stat: "88% of users won't return after a bad UX" },
@@ -13,7 +14,7 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="section-padding">
+    <section id="services" className="section-padding" aria-label="Services">
       <div className="container max-w-6xl">
         <div className="text-center mb-16">
           <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-3">What I Do</p>
@@ -27,18 +28,22 @@ const Services = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {services.map((s, i) => (
-            <div
+            <motion.div
               key={s.title}
-              className="glass rounded-xl p-6 card-hover group cursor-pointer"
-              style={{ animationDelay: `${i * 0.05}s` }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.06 }}
+              whileHover={{ y: -6, transition: { duration: 0.2 } }}
+              className="glass rounded-xl p-6 group cursor-pointer"
             >
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
                 <s.icon className="w-6 h-6 text-primary" />
               </div>
               <h3 className="font-heading font-semibold text-foreground mb-2">{s.title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed mb-2">{s.desc}</p>
               <p className="text-xs text-primary/70 italic">📊 {s.stat}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

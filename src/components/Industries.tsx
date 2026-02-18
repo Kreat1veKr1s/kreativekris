@@ -1,4 +1,5 @@
 import { ShoppingBag, Sparkles, Store, Coffee, Wrench, Music, Heart, Cpu, Rocket, DollarSign, User, Building, Briefcase, GlassWater } from "lucide-react";
+import { motion } from "framer-motion";
 
 const industries = [
   { icon: ShoppingBag, name: "E-Commerce" },
@@ -19,7 +20,7 @@ const industries = [
 
 const Industries = () => {
   return (
-    <section className="section-padding">
+    <section className="section-padding" aria-label="Industries served">
       <div className="container max-w-4xl">
         <div className="text-center mb-12">
           <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-3">Industries</p>
@@ -36,14 +37,19 @@ const Industries = () => {
 
         <div className="glass rounded-2xl p-6 md:p-8">
           <div className="flex flex-wrap justify-center gap-3">
-            {industries.map((ind) => (
-              <div
+            {industries.map((ind, i) => (
+              <motion.div
                 key={ind.name}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: i * 0.03 }}
+                whileHover={{ scale: 1.08, transition: { duration: 0.15 } }}
                 className="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-secondary/50 border border-border/30 hover:border-primary/40 hover:bg-primary/10 transition-all duration-300 cursor-default group"
               >
                 <ind.icon className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
                 <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">{ind.name}</span>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
