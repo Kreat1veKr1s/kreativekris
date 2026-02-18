@@ -16,6 +16,7 @@ import ContactCTA from "@/components/ContactCTA";
 import Footer from "@/components/Footer";
 import VisitorWidget from "@/components/VisitorWidget";
 import MobileVisitorWidget from "@/components/MobileVisitorWidget";
+import ScrollToTop from "@/components/ScrollToTop";
 import { Helmet } from "react-helmet-async";
 import { usePageTracking } from "@/hooks/usePageTracking";
 
@@ -53,6 +54,7 @@ const Index = () => {
       </Helmet>
       <Navbar />
       <VisitorWidget />
+      <ScrollToTop />
       <Hero />
       <AnimatedSection>
         <AboutMe />
