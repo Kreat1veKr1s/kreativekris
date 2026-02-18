@@ -58,6 +58,9 @@ const Index = () => {
         <AboutMe />
       </AnimatedSection>
       <AnimatedSection>
+        <Skills />
+      </AnimatedSection>
+      <AnimatedSection>
         <Services />
       </AnimatedSection>
       <AnimatedSection>
@@ -71,9 +74,6 @@ const Index = () => {
       </AnimatedSection>
       <AnimatedSection>
         <CreativeGallery />
-      </AnimatedSection>
-      <AnimatedSection>
-        <Skills />
       </AnimatedSection>
       <AnimatedSection>
         <Pricing />
