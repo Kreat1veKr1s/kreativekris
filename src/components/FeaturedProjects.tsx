@@ -2,7 +2,7 @@ import { ExternalLink, TrendingUp, ImageIcon, ChevronLeft, ChevronRight } from "
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+
 import { Globe, Megaphone, Palette, Share2, PenTool } from "lucide-react";
 
 const projects = [
@@ -141,37 +141,28 @@ const FeaturedProjects = () => {
           </div>
         </div>
 
-        {/* Portfolio by Category — Accordion */}
+        {/* Portfolio by Category — Grid */}
         <div className="mt-10">
           <h3 className="text-center font-heading text-xl font-bold text-foreground mb-5">
             Work by <span className="text-gradient">Category</span>
           </h3>
-          <div className="glass rounded-2xl p-5 md:p-6">
-            <Accordion type="single" collapsible className="space-y-1">
-              {portfolioCategories.map((cat) => (
-                <AccordionItem key={cat.title} value={cat.title} className="border-border/30">
-                  <AccordionTrigger className="hover:no-underline py-3">
-                    <div className="flex items-center gap-2.5">
-                      <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
-                        <cat.icon className="w-4 h-4 text-primary" />
-                      </div>
-                      <span className="font-heading font-semibold text-sm text-foreground">{cat.title}</span>
-                      <span className="text-xs text-muted-foreground">({cat.items.length})</span>
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent>
-                    <div className="grid grid-cols-2 gap-2 pt-1 pb-1">
-                      {cat.items.map((item) => (
-                        <div key={item} className="group/item cursor-pointer flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-primary/5 transition-colors">
-                          <ImageIcon className="w-4 h-4 text-muted-foreground/40 group-hover/item:text-primary/60 transition-colors shrink-0" />
-                          <span className="text-sm text-muted-foreground group-hover/item:text-foreground transition-colors">{item}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {portfolioCategories.map((cat) => (
+              <div key={cat.title} className="glass rounded-2xl p-5 card-hover group">
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
+                  <cat.icon className="w-5 h-5 text-primary" />
+                </div>
+                <h4 className="font-heading font-semibold text-sm text-foreground mb-2">{cat.title}</h4>
+                <ul className="space-y-1.5">
+                  {cat.items.map((item) => (
+                    <li key={item} className="text-xs text-muted-foreground hover:text-foreground transition-colors cursor-pointer flex items-center gap-1.5">
+                      <ImageIcon className="w-3 h-3 text-muted-foreground/40 shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </div>
