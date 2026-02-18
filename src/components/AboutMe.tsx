@@ -1,7 +1,16 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { Zap, Target, Rocket, Brain, Award, TrendingUp, Star, ExternalLink, ChevronLeft, ChevronRight, Sparkles, Wrench, Palette as PaletteIcon, BarChart3, Video } from "lucide-react";
+import { Zap, Target, Rocket, Brain, Award, TrendingUp, Star, ExternalLink, ChevronLeft, ChevronRight, Sparkles, Wrench, Palette as PaletteIcon, BarChart3, Video, Camera, Shield, Globe, BadgeCheck, ThumbsUp, DollarSign } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+
+const profileBadges = [
+  { icon: Globe, label: "Remote Experienced" },
+  { icon: BadgeCheck, label: "Google Certified" },
+  { icon: Zap, label: "AI-Powered" },
+  { icon: ThumbsUp, label: "Top Reviewed" },
+  { icon: DollarSign, label: "Affordable" },
+  { icon: Shield, label: "Trusted Partner" },
+];
 
 const highlights = [
   { icon: Zap, label: "AI-Powered", desc: "Leveraging cutting-edge AI tools" },
@@ -182,9 +191,20 @@ const StarRating = ({ rating }: { rating: number }) => (
 
 const AboutMe = () => {
   const [current, setCurrent] = useState(0);
+  const [profileImage, setProfileImage] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const prev = () => setCurrent((c) => (c === 0 ? testimonials.length - 1 : c - 1));
   const next = () => setCurrent((c) => (c === testimonials.length - 1 ? 0 : c + 1));
   const t = testimonials[current];
+
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => setProfileImage(reader.result as string);
+      reader.readAsDataURL(file);
+    }
+  };
 
   return (
     <section id="about" className="section-padding">
@@ -203,7 +223,50 @@ const AboutMe = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6 }}
+            className="space-y-6"
           >
+            {/* Profile Photo Block */}
+            <div className="glass rounded-2xl p-6 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-[hsl(var(--glow-warm))] to-primary" />
+              
+              <div className="flex flex-col items-center">
+                <div
+                  onClick={() => fileInputRef.current?.click()}
+                  className="relative w-40 h-40 rounded-2xl border-2 border-dashed border-primary/30 hover:border-primary/60 transition-colors cursor-pointer group overflow-hidden bg-primary/5 mb-5"
+                >
+                  {profileImage ? (
+                    <img src={profileImage} alt="Profile" className="w-full h-full object-cover" />
+                  ) : (
+                    <div className="flex flex-col items-center justify-center h-full text-muted-foreground group-hover:text-primary transition-colors">
+                      <Camera className="w-8 h-8 mb-2" />
+                      <span className="text-xs font-medium">Upload Photo</span>
+                    </div>
+                  )}
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                    className="hidden"
+                  />
+                </div>
+
+                {/* Highlight Badges */}
+                <div className="flex flex-wrap justify-center gap-2">
+                  {profileBadges.map((badge) => (
+                    <div
+                      key={badge.label}
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-xs font-medium text-primary"
+                    >
+                      <badge.icon className="w-3.5 h-3.5" />
+                      <span>{badge.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Bio Card */}
             <div className="glass rounded-2xl p-8 relative overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-[hsl(var(--glow-warm))] to-primary" />
               
