@@ -3,8 +3,6 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import { Globe, Megaphone, Palette, Share2, PenTool } from "lucide-react";
-
 const projects = [
   {
     title: "Luxe Living Interiors",
@@ -44,13 +42,6 @@ const projects = [
   },
 ];
 
-const portfolioCategories = [
-  { icon: Globe, title: "Websites", items: ["Luxe Living Interiors", "Peak Fitness Studio", "GreenLeaf Organics", "Nova Tech Solutions"] },
-  { icon: Megaphone, title: "Ads", items: ["Summit Financial – Google Ads", "FreshBite – Meta Ads", "AutoPro Dealers – PPC", "Bloom Beauty – TikTok Ads"] },
-  { icon: Palette, title: "Branding", items: ["FreshBite Brand Identity", "Nova Tech Logo Suite", "Bloom Beauty Rebrand", "Summit Financial Guidelines"] },
-  { icon: Share2, title: "Social Media", items: ["FreshBite Instagram Growth", "Peak Fitness TikTok", "GreenLeaf Pinterest", "AutoPro Facebook Strategy"] },
-  { icon: PenTool, title: "Content", items: ["Luxe Living Blog Series", "Summit Financial Whitepapers", "FreshBite Recipe Videos", "Nova Tech Case Studies"] },
-];
 
 const ImagePlaceholder = ({ label, aspect }: { label: string; aspect: string }) => {
   const aspectClass = aspect === "portrait" ? "aspect-[3/4]" : aspect === "square" ? "aspect-square" : "aspect-video";
@@ -140,32 +131,6 @@ const FeaturedProjects = () => {
             ))}
           </div>
         </div>
-
-        {/* Portfolio by Category — Grid */}
-        <div className="mt-10">
-          <h3 className="text-center font-heading text-xl font-bold text-foreground mb-5">
-            Work by <span className="text-gradient">Category</span>
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {portfolioCategories.map((cat) => (
-              <div key={cat.title} className="glass rounded-2xl p-5 card-hover group">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
-                  <cat.icon className="w-5 h-5 text-primary" />
-                </div>
-                <h4 className="font-heading font-semibold text-sm text-foreground mb-2">{cat.title}</h4>
-                <ul className="space-y-1.5">
-                  {cat.items.map((item) => (
-                    <li key={item} className="text-xs text-muted-foreground hover:text-foreground transition-colors cursor-pointer flex items-center gap-1.5">
-                      <ImageIcon className="w-3 h-3 text-muted-foreground/40 shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
     </section>
   );
 };
