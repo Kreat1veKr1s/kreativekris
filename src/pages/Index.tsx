@@ -1,5 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import AnimatedSection from "@/components/AnimatedSection";
+import AboutMe from "@/components/AboutMe";
 import Services from "@/components/Services";
 import FeaturedProjects from "@/components/FeaturedProjects";
 import PortfolioGrid from "@/components/PortfolioGrid";
@@ -17,16 +19,39 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <Hero />
-      <Services />
-      <FeaturedProjects />
-      <PortfolioGrid />
-      <Skills />
-      <Testimonials />
-      <Pricing />
-      <Onboarding />
-      <CustomPlan />
-      <Tools />
-      <ContactCTA />
+      <AnimatedSection>
+        <AboutMe />
+      </AnimatedSection>
+      <AnimatedSection>
+        <Services />
+      </AnimatedSection>
+      <AnimatedSection>
+        <FeaturedProjects />
+      </AnimatedSection>
+      <AnimatedSection>
+        <PortfolioGrid />
+      </AnimatedSection>
+      <AnimatedSection>
+        <Skills />
+      </AnimatedSection>
+      <AnimatedSection>
+        <Testimonials />
+      </AnimatedSection>
+      <AnimatedSection>
+        <Pricing />
+      </AnimatedSection>
+      <AnimatedSection>
+        <Onboarding />
+      </AnimatedSection>
+      <AnimatedSection>
+        <CustomPlan />
+      </AnimatedSection>
+      <AnimatedSection>
+        <Tools />
+      </AnimatedSection>
+      <AnimatedSection>
+        <ContactCTA />
+      </AnimatedSection>
       <Footer />
     </div>
   );
