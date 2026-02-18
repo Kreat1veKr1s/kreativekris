@@ -5,7 +5,7 @@ import AboutMe from "@/components/AboutMe";
 import Services from "@/components/Services";
 import Industries from "@/components/Industries";
 import FeaturedProjects from "@/components/FeaturedProjects";
-import PortfolioGrid from "@/components/PortfolioGrid";
+// PortfolioGrid merged into FeaturedProjects
 import Skills from "@/components/Skills";
 import Pricing from "@/components/Pricing";
 import Onboarding from "@/components/Onboarding";
@@ -71,9 +71,7 @@ const Index = () => {
       <AnimatedSection>
         <FeaturedProjects />
       </AnimatedSection>
-      <AnimatedSection>
-        <PortfolioGrid />
-      </AnimatedSection>
+      {/* PortfolioGrid merged into FeaturedProjects above */}
       <AnimatedSection>
         <CreativeGallery />
       </AnimatedSection>
