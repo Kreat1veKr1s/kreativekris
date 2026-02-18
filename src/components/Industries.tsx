@@ -29,6 +29,9 @@ const Industries = () => {
           <p className="text-muted-foreground mt-4 max-w-lg mx-auto">
             Proven experience growing brands across diverse industries.
           </p>
+          <p className="text-xs text-muted-foreground/60 mt-2 italic max-w-md mx-auto">
+            "By 2026, 72% of SMBs consider digital marketing their top growth lever." — HubSpot
+          </p>
         </div>
 
         <div className="glass rounded-2xl p-6 md:p-8">

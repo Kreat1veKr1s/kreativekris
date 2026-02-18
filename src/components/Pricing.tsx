@@ -63,6 +63,9 @@ const Pricing = () => {
           <h2 className="text-4xl md:text-5xl font-bold font-heading">
             Affordable Options, <span className="text-gradient">Impactful Results</span>
           </h2>
+          <p className="text-muted-foreground mt-4 max-w-lg mx-auto text-sm">
+            Email marketing alone returns <span className="text-primary font-medium">$36–$42 for every $1 spent</span> in 2026. Imagine what a full strategy delivers.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

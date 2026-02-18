@@ -115,6 +115,9 @@ const Testimonials = () => {
           <h2 className="text-4xl md:text-5xl font-bold font-heading">
             What Clients <span className="text-gradient">Say</span>
           </h2>
+          <p className="text-xs text-muted-foreground/60 mt-3 italic">
+            92% of consumers trust peer recommendations over brand advertising — Nielsen, 2026
+          </p>
         </div>
 
         <div className="glass rounded-2xl p-8 md:p-12 relative">

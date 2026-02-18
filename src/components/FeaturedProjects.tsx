@@ -68,6 +68,9 @@ const FeaturedProjects = () => {
           <h2 className="text-4xl md:text-5xl font-bold font-heading">
             Favorite <span className="text-gradient">Projects</span>
           </h2>
+          <p className="text-sm text-muted-foreground mt-4 max-w-lg mx-auto">
+            In 2026, businesses using case studies in sales see <span className="text-primary font-medium">70% higher close rates</span>.
+          </p>
         </div>
 
         <div className="relative">

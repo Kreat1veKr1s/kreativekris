@@ -53,6 +53,9 @@ const AboutMe = () => {
                   Whether you're a startup looking to launch or an established brand ready to scale, 
                   I bring the <span className="text-primary font-medium">strategy, creativity, and execution</span> to make it happen.
                 </p>
+                <blockquote className="border-l-2 border-primary/40 pl-4 text-sm italic text-muted-foreground/80 mt-2">
+                  "94% of organizations say influencer & content marketing outperforms traditional digital ads in 2026." — Sprout Social
+                </blockquote>
               </div>
 
               {/* Milestone stats */}
