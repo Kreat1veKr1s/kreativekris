@@ -49,13 +49,16 @@ const CustomPlan = () => {
   return (
     <section className="section-padding bg-surface/50">
       <div className="container max-w-4xl">
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 md:mb-14">
           <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-3">À La Carte</p>
           <h2 className="text-4xl md:text-5xl font-bold font-heading">
             Build Your <span className="text-gradient">Custom Plan</span>
           </h2>
           <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
             Need something specific? Pick and choose from my full menu of marketing services.
+          </p>
+          <p className="text-xs text-muted-foreground/60 mt-2 italic">
+            Personalized marketing plans deliver 5–8x ROI on marketing spend — McKinsey, 2026
           </p>
         </div>
 
@@ -70,7 +73,7 @@ const CustomPlan = () => {
                   </div>
                 </AccordionTrigger>
                 <AccordionContent>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 pt-1 pb-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5 pt-1 pb-2">
                     {group.items.map((item) => (
                       <div key={item} className="flex items-start gap-2.5 text-sm text-muted-foreground hover:text-foreground transition-colors py-1">
                         <span className="w-1.5 h-1.5 rounded-full bg-primary/50 shrink-0 mt-1.5" />

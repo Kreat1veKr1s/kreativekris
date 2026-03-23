@@ -24,7 +24,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Track active section
   useEffect(() => {
     const sectionIds = navItems.map((item) => item.href.replace("#", ""));
     const observer = new IntersectionObserver(
@@ -65,7 +64,7 @@ const Navbar = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         scrolled
-          ? "glass py-2 shadow-[0_4px_30px_hsl(var(--glow)/0.08)]"
+          ? "glass py-2 shadow-sm"
           : "py-4 md:py-5 bg-transparent"
       )}
       role="navigation"
@@ -83,7 +82,7 @@ const Navbar = () => {
         >
           <Sparkles className="w-5 h-5 text-primary transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110" />
           <span className="tracking-tight">
-            Creative<span className="text-primary">Edge</span>
+            Kreative<span className="text-gradient">Kris</span>
           </span>
         </a>
 
@@ -105,7 +104,7 @@ const Navbar = () => {
               >
                 {item.label}
                 {isActive && (
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-primary shadow-[0_0_8px_hsl(var(--glow)/0.6)]" />
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-primary" />
                 )}
               </a>
             );

@@ -5,7 +5,7 @@ const testimonials = [
   {
     name: "Sarah Mitchell",
     role: "CEO, Luxe Living Interiors",
-    quote: "Working with CreativeEdge completely transformed our online presence. Our leads increased by 340% and we finally rank on page one for all our target keywords. Absolute game-changer.",
+    quote: "Working with KreativeKris completely transformed our online presence. Our leads increased by 340% and we finally rank on page one for all our target keywords. Absolute game-changer.",
     rating: 5,
     platform: "Google",
     platformUrl: "#",
@@ -93,7 +93,7 @@ const StarRating = ({ rating }: { rating: number }) => (
     {Array.from({ length: 5 }).map((_, i) => (
       <Star
         key={i}
-        className={`w-4 h-4 ${i < rating ? "text-[hsl(var(--glow-warm))] fill-[hsl(var(--glow-warm))]" : "text-muted-foreground"}`}
+        className={`w-4 h-4 ${i < rating ? "text-amber-400 fill-amber-400" : "text-muted-foreground"}`}
       />
     ))}
   </div>
@@ -121,16 +121,15 @@ const Testimonials = () => {
         </div>
 
         <div className="glass rounded-2xl p-8 md:p-12 relative">
-          {/* Navigation arrows */}
           <button
             onClick={prev}
-            className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-secondary/80 hover:bg-secondary flex items-center justify-center text-foreground transition-colors z-10"
+            className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-secondary hover:bg-secondary/80 flex items-center justify-center text-foreground transition-colors z-10"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
           <button
             onClick={next}
-            className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-secondary/80 hover:bg-secondary flex items-center justify-center text-foreground transition-colors z-10"
+            className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-secondary hover:bg-secondary/80 flex items-center justify-center text-foreground transition-colors z-10"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
@@ -165,7 +164,6 @@ const Testimonials = () => {
             </div>
           </div>
 
-          {/* Dots */}
           <div className="flex justify-center gap-2 mt-8">
             {testimonials.map((_, i) => (
               <button
