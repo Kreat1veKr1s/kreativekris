@@ -57,23 +57,23 @@ const plans = [
 ];
 
 const Pricing = () => {
-  const [current, setCurrent] = useState(1); // Start on popular plan
+  const [current, setCurrent] = useState(1);
 
   return (
     <section id="pricing" className="section-padding bg-surface/50">
       <div className="container max-w-6xl">
-        <div className="text-center mb-10 md:mb-14">
+        <div className="text-center mb-12 md:mb-16">
           <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-3">Pricing Plans</p>
           <h2 className="text-3xl md:text-5xl font-bold font-heading">
             Affordable Options, <span className="text-gradient">Impactful Results</span>
           </h2>
-          <p className="text-muted-foreground mt-3 max-w-lg mx-auto text-sm">
-            Email marketing alone returns <span className="text-primary font-medium">$36–$42 for every $1 spent</span> in 2026.
+          <p className="text-muted-foreground mt-4 max-w-lg mx-auto text-sm">
+            Email marketing alone returns <span className="text-primary font-medium">$36–$42 for every $1 spent</span> in 2026. Smart investment starts here.
           </p>
         </div>
 
         {/* Desktop grid */}
-        <div className="hidden md:grid grid-cols-3 gap-5">
+        <div className="hidden md:grid grid-cols-3 gap-6">
           {plans.map((plan) => (
             <PricingCard key={plan.name} plan={plan} />
           ))}
@@ -93,10 +93,10 @@ const Pricing = () => {
             </motion.div>
           </AnimatePresence>
 
-          <div className="flex items-center justify-center gap-3 mt-5">
+          <div className="flex items-center justify-center gap-3 mt-6">
             <button
               onClick={() => setCurrent((c) => (c === 0 ? plans.length - 1 : c - 1))}
-              className="w-8 h-8 rounded-full bg-secondary/80 hover:bg-secondary flex items-center justify-center text-foreground transition-colors"
+              className="w-9 h-9 rounded-full bg-secondary hover:bg-secondary/80 flex items-center justify-center text-foreground transition-colors"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
@@ -106,14 +106,14 @@ const Pricing = () => {
                   key={i}
                   onClick={() => setCurrent(i)}
                   className={`h-1.5 rounded-full transition-all duration-300 ${
-                    i === current ? "bg-primary w-5" : "bg-muted-foreground/30 w-1.5 hover:bg-muted-foreground/50"
+                    i === current ? "bg-primary w-6" : "bg-muted-foreground/30 w-1.5 hover:bg-muted-foreground/50"
                   }`}
                 />
               ))}
             </div>
             <button
               onClick={() => setCurrent((c) => (c === plans.length - 1 ? 0 : c + 1))}
-              className="w-8 h-8 rounded-full bg-secondary/80 hover:bg-secondary flex items-center justify-center text-foreground transition-colors"
+              className="w-9 h-9 rounded-full bg-secondary hover:bg-secondary/80 flex items-center justify-center text-foreground transition-colors"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -131,21 +131,21 @@ const PricingCard = ({ plan }: { plan: typeof plans[0] }) => (
     }`}
   >
     {plan.popular && (
-      <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-primary text-primary-foreground text-xs font-bold tracking-wider uppercase">
+      <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-[hsl(255_45%_55%)] to-[hsl(218_70%_55%)] text-white text-xs font-bold tracking-wider uppercase">
         Best Seller
       </div>
     )}
 
-    <div className="text-3xl mb-2">{plan.emoji}</div>
+    <div className="text-3xl mb-3">{plan.emoji}</div>
     <h3 className="font-heading font-bold text-xl text-foreground mb-1">{plan.name}</h3>
-    <p className="text-sm text-muted-foreground mb-5">{plan.tagline}</p>
+    <p className="text-sm text-muted-foreground mb-6">{plan.tagline}</p>
 
-    <div className="mb-5">
+    <div className="mb-6">
       <span className="text-4xl font-bold text-foreground">{plan.price}</span>
       <span className="text-muted-foreground text-sm">/month</span>
     </div>
 
-    <ul className="space-y-2.5 mb-6 flex-1">
+    <ul className="space-y-3 mb-8 flex-1">
       {plan.features.map((f) => (
         <li key={f} className="flex items-start gap-2 text-sm text-muted-foreground">
           <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />

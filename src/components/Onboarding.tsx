@@ -26,7 +26,7 @@ const Onboarding = () => {
   return (
     <section className="section-padding">
       <div className="container max-w-5xl">
-        <div className="text-center mb-16">
+        <div className="text-center mb-14 md:mb-16">
           <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-3">How It Works</p>
           <h2 className="text-4xl md:text-5xl font-bold font-heading">
             3-Step <span className="text-gradient">Onboarding</span>
@@ -35,7 +35,7 @@ const Onboarding = () => {
           <p className="text-xs text-muted-foreground/60 mt-2 italic">Brands that launch campaigns within 2 weeks see 47% higher first-month engagement — WordStream, 2026</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
           {steps.map((step, i) => (
             <motion.div
               key={step.number}
@@ -45,7 +45,6 @@ const Onboarding = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
             >
-              {/* Connector line */}
               {i < steps.length - 1 && (
                 <div className="hidden md:block absolute top-10 left-[60%] w-[80%] h-px bg-gradient-to-r from-primary/40 to-transparent" />
               )}

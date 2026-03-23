@@ -13,10 +13,10 @@ const profileBadges = [
 ];
 
 const highlights = [
-  { icon: Zap, label: "AI-Powered", desc: "Leveraging cutting-edge AI tools" },
-  { icon: Target, label: "Results-Driven", desc: "Data-backed marketing strategies" },
-  { icon: Rocket, label: "Growth Focused", desc: "Scaling brands from zero to hero" },
-  { icon: Brain, label: "Full-Stack Marketer", desc: "Strategy to execution, end-to-end" },
+  { icon: Zap, label: "AI-Powered", desc: "Leveraging cutting-edge AI tools for smarter campaigns" },
+  { icon: Target, label: "Results-Driven", desc: "Data-backed strategies with measurable ROI" },
+  { icon: Rocket, label: "Growth Focused", desc: "Scaling brands from zero to market leaders" },
+  { icon: Brain, label: "Full-Stack Marketer", desc: "Strategy to execution, end-to-end delivery" },
 ];
 
 const milestones = [
@@ -29,7 +29,7 @@ const testimonials = [
   {
     name: "Sarah Mitchell",
     role: "CEO, Luxe Living Interiors",
-    quote: "Working with CreativeEdge completely transformed our online presence. Our leads increased by 340% and we finally rank on page one for all our target keywords. Absolute game-changer.",
+    quote: "Working with KreativeKris completely transformed our online presence. Our leads increased by 340% and we finally rank on page one for all our target keywords. Absolute game-changer.",
     rating: 5,
     platform: "Google",
     platformUrl: "#",
@@ -183,7 +183,7 @@ const StarRating = ({ rating }: { rating: number }) => (
     {Array.from({ length: 5 }).map((_, i) => (
       <Star
         key={i}
-        className={`w-4 h-4 ${i < rating ? "text-[hsl(var(--glow-warm))] fill-[hsl(var(--glow-warm))]" : "text-muted-foreground"}`}
+        className={`w-4 h-4 ${i < rating ? "text-amber-400 fill-amber-400" : "text-muted-foreground"}`}
       />
     ))}
   </div>
@@ -209,25 +209,28 @@ const AboutMe = () => {
   return (
     <section id="about" className="section-padding">
       <div className="container max-w-6xl">
-        <div className="text-center mb-10 md:mb-16">
+        <div className="text-center mb-12 md:mb-16">
           <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-3">About Me</p>
           <h2 className="text-3xl md:text-5xl font-bold font-heading">
             The <span className="text-gradient">Marketer</span> Behind the Work
           </h2>
+          <p className="text-xs text-muted-foreground/70 mt-3 italic max-w-md mx-auto">
+            61% of marketers say improving SEO and growing organic presence is their top priority — HubSpot, 2026
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-start">
           {/* Bio side */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6 }}
-            className="space-y-5"
+            className="space-y-6"
           >
             {/* Profile Photo Block */}
-            <div className="glass rounded-2xl p-5 md:p-6 relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-[hsl(var(--glow-warm))] to-primary" />
+            <div className="glass rounded-2xl p-6 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[hsl(255_45%_55%)] to-[hsl(218_70%_55%)]" />
               
               <div className="flex flex-col sm:flex-row items-center gap-5">
                 <div
@@ -268,7 +271,7 @@ const AboutMe = () => {
 
             {/* Bio Card */}
             <div className="glass rounded-2xl p-6 md:p-8 relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-[hsl(var(--glow-warm))] to-primary" />
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[hsl(255_45%_55%)] to-[hsl(218_70%_55%)]" />
               
               <h3 className="font-heading text-2xl font-bold text-foreground mb-4">
                 Hi, I'm a Creative Marketing Strategist 👋
@@ -311,7 +314,7 @@ const AboutMe = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="space-y-4"
+            className="space-y-5"
           >
             {highlights.map((h, i) => (
               <motion.div
@@ -320,7 +323,7 @@ const AboutMe = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.1 * i }}
-                className="glass rounded-xl p-5 flex items-center gap-5 card-hover group"
+                className="glass rounded-xl p-6 flex items-center gap-5 card-hover group"
               >
                 <div className="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
                   <h.icon className="w-7 h-7 text-primary" />
@@ -335,7 +338,7 @@ const AboutMe = () => {
         </div>
 
         {/* Social Proof / Testimonials Carousel */}
-        <div className="mt-10 md:mt-16">
+        <div className="mt-14 md:mt-20">
           <h3 className="text-center font-heading text-2xl font-bold text-foreground mb-2">
             What Clients <span className="text-gradient">Say</span>
           </h3>
@@ -346,13 +349,13 @@ const AboutMe = () => {
           <div className="glass rounded-2xl p-6 md:p-12 relative">
             <button
               onClick={prev}
-              className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-secondary/80 hover:bg-secondary flex items-center justify-center text-foreground transition-colors z-10"
+              className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-secondary hover:bg-secondary/80 flex items-center justify-center text-foreground transition-colors z-10"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={next}
-              className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-secondary/80 hover:bg-secondary flex items-center justify-center text-foreground transition-colors z-10"
+              className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-secondary hover:bg-secondary/80 flex items-center justify-center text-foreground transition-colors z-10"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
@@ -401,31 +404,37 @@ const AboutMe = () => {
           </div>
         </div>
 
-        {/* Toolkit */}
-        <div className="mt-10 md:mt-16">
-          <h3 className="text-center font-heading text-2xl font-bold text-foreground mb-8">
-            My <span className="text-gradient">Toolkit</span>
+        {/* Tools / Tech Stack */}
+        <div className="mt-14 md:mt-20">
+          <h3 className="text-center font-heading text-2xl font-bold text-foreground mb-2">
+            Tools & <span className="text-gradient">Tech Stack</span>
           </h3>
+          <p className="text-center text-xs text-muted-foreground/60 italic mb-8">
+            Marketers using 5+ tools in their stack see 39% higher campaign performance — Gartner, 2026
+          </p>
 
           <div className="glass rounded-2xl p-6 md:p-8">
-            <Accordion type="single" collapsible className="space-y-2">
+            <Accordion type="multiple" defaultValue={["AI & Productivity"]} className="space-y-2">
               {toolCategories.map((cat) => (
                 <AccordionItem key={cat.title} value={cat.title} className="border-border/30">
                   <AccordionTrigger className="hover:no-underline py-4">
                     <div className="flex items-center gap-3">
                       <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
-                        <cat.icon className="w-4.5 h-4.5 text-primary" />
+                        <cat.icon className="w-4 h-4 text-primary" />
                       </div>
                       <span className="font-heading font-semibold text-foreground">{cat.title}</span>
-                      <span className="text-xs text-muted-foreground ml-1">({cat.tools.length})</span>
+                      <span className="text-xs text-muted-foreground">({cat.tools.length})</span>
                     </div>
                   </AccordionTrigger>
                   <AccordionContent>
-                    <div className="flex flex-wrap gap-2 pt-2 pb-1">
+                    <div className="flex flex-wrap gap-3 pt-2 pb-1 pl-12">
                       {cat.tools.map((tool) => (
-                        <div key={tool.name} className="flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 border border-border/30 hover:border-primary/30 transition-colors">
+                        <div
+                          key={tool.name}
+                          className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/60 hover:bg-primary/10 border border-border/30 hover:border-primary/30 transition-all cursor-default"
+                        >
                           <span className="text-base">{tool.logo}</span>
-                          <span className="text-sm text-muted-foreground">{tool.name}</span>
+                          <span className="text-xs font-medium text-foreground">{tool.name}</span>
                         </div>
                       ))}
                     </div>

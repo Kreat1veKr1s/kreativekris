@@ -59,11 +59,14 @@ const Skills = () => {
   return (
     <section id="skills" className="section-padding bg-surface/50">
       <div className="container max-w-5xl">
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 md:mb-14">
           <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-3">Skills & Certifications</p>
           <h2 className="text-4xl md:text-5xl font-bold font-heading">
             Full-Stack <span className="text-gradient">Marketer</span>
           </h2>
+          <p className="text-xs text-muted-foreground/70 mt-3 italic max-w-md mx-auto">
+            The most in-demand marketing skills for 2026: data analytics, AI proficiency, and omnichannel strategy — LinkedIn
+          </p>
         </div>
 
         {/* Skills Accordion */}

@@ -25,7 +25,7 @@ const transformations = [
 ];
 
 const MetricCard = ({ metrics, variant }: { metrics: string[]; variant: "before" | "after" }) => (
-  <div className={`w-full aspect-video bg-gradient-to-br ${variant === "before" ? "from-destructive/15 to-muted/50" : "from-primary/15 to-muted/50"} flex flex-col items-center justify-center gap-2 p-6`}>
+  <div className={`w-full aspect-video bg-gradient-to-br ${variant === "before" ? "from-destructive/10 to-muted/30" : "from-primary/10 to-muted/30"} flex flex-col items-center justify-center gap-2 p-6`}>
     <div className={`text-xs font-bold uppercase tracking-widest mb-2 ${variant === "before" ? "text-destructive" : "text-primary"}`}>
       {variant === "before" ? "Before" : "After"}
     </div>
@@ -42,7 +42,7 @@ const ProjectTransformations = () => {
   return (
     <section className="section-padding">
       <div className="container max-w-4xl">
-        <div className="text-center mb-10">
+        <div className="text-center mb-12">
           <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-3">Transformations</p>
           <h2 className="text-3xl md:text-5xl font-bold font-heading">
             Before & <span className="text-gradient">After</span>
@@ -50,12 +50,15 @@ const ProjectTransformations = () => {
           <p className="text-muted-foreground mt-3 text-sm max-w-md mx-auto">
             Drag the slider to see real results. Numbers don't lie.
           </p>
+          <p className="text-xs text-muted-foreground/60 mt-2 italic">
+            Brands that track & showcase KPIs build 67% more trust with prospects — Edelman, 2026
+          </p>
         </div>
 
-        <div className="glass rounded-2xl p-4 md:p-6">
-          <div className="flex items-center justify-between mb-4">
+        <div className="glass rounded-2xl p-5 md:p-8">
+          <div className="flex items-center justify-between mb-5">
             <h3 className="font-heading font-bold text-sm md:text-base text-foreground">{t.title}</h3>
-            <span className="text-xs font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">{t.stat}</span>
+            <span className="text-xs font-semibold text-primary bg-primary/10 px-3 py-1.5 rounded-full">{t.stat}</span>
           </div>
 
           <BeforeAfterSlider
@@ -65,10 +68,10 @@ const ProjectTransformations = () => {
             afterContent={<MetricCard metrics={t.after.metrics} variant="after" />}
           />
 
-          <div className="flex items-center justify-center gap-3 mt-5">
+          <div className="flex items-center justify-center gap-3 mt-6">
             <button
               onClick={() => setCurrent((c) => (c === 0 ? transformations.length - 1 : c - 1))}
-              className="w-8 h-8 rounded-full bg-secondary/80 hover:bg-secondary flex items-center justify-center text-foreground transition-colors"
+              className="w-9 h-9 rounded-full bg-secondary hover:bg-secondary/80 flex items-center justify-center text-foreground transition-colors"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
@@ -77,13 +80,13 @@ const ProjectTransformations = () => {
                 <button
                   key={i}
                   onClick={() => setCurrent(i)}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${i === current ? "bg-primary w-5" : "bg-muted-foreground/30 w-1.5 hover:bg-muted-foreground/50"}`}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${i === current ? "bg-primary w-6" : "bg-muted-foreground/30 w-1.5 hover:bg-muted-foreground/50"}`}
                 />
               ))}
             </div>
             <button
               onClick={() => setCurrent((c) => (c === transformations.length - 1 ? 0 : c + 1))}
-              className="w-8 h-8 rounded-full bg-secondary/80 hover:bg-secondary flex items-center justify-center text-foreground transition-colors"
+              className="w-9 h-9 rounded-full bg-secondary hover:bg-secondary/80 flex items-center justify-center text-foreground transition-colors"
             >
               <ChevronRight className="w-4 h-4" />
             </button>

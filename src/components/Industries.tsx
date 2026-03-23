@@ -17,18 +17,20 @@ const industries = [
   { icon: Briefcase, name: "Professional Services" },
 ];
 
-// Duplicate for seamless loop
 const doubled = [...industries, ...industries];
 
 const Industries = () => {
   return (
-    <section className="section-padding py-10 md:py-16" aria-label="Industries served">
+    <section className="section-padding py-12 md:py-20" aria-label="Industries served">
       <div className="container max-w-5xl">
-        <div className="text-center mb-8">
+        <div className="text-center mb-10">
           <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-3">Industries</p>
           <h2 className="text-3xl md:text-4xl font-bold font-heading">
             Who I <span className="text-gradient">Work With</span>
           </h2>
+          <p className="text-xs text-muted-foreground/70 mt-3 italic max-w-md mx-auto">
+            Businesses investing in multi-channel marketing see 287% higher purchase rates — Omnisend, 2026
+          </p>
         </div>
 
         {/* Marquee */}
@@ -40,7 +42,7 @@ const Industries = () => {
             {doubled.map((ind, i) => (
               <div
                 key={`${ind.name}-${i}`}
-                className="flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 border border-border/30 hover:border-primary/40 hover:bg-primary/10 transition-all duration-300 whitespace-nowrap shrink-0"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-secondary/50 border border-border/30 hover:border-primary/40 hover:bg-primary/10 transition-all duration-300 whitespace-nowrap shrink-0"
               >
                 <ind.icon className="w-4 h-4 text-muted-foreground" />
                 <span className="text-sm font-medium text-muted-foreground">{ind.name}</span>

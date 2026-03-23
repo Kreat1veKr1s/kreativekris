@@ -11,7 +11,7 @@ const projects = [
     category: "Website • SEO • Google Ads",
     description: "Complete digital transformation for a luxury interior design firm. Built a stunning website, optimized for local SEO, and launched Google Ads campaigns that drove a 340% increase in qualified leads.",
     results: ["340% more leads", "Page 1 rankings", "$2.1M pipeline generated"],
-    gradient: "from-primary/20 to-glow-warm/10",
+    gradient: "from-primary/10 to-accent/10",
     images: [
       { label: "Website Design", aspect: "landscape" },
       { label: "Google Ads Dashboard", aspect: "landscape" },
@@ -23,7 +23,7 @@ const projects = [
     category: "Social Media • Content • Branding",
     description: "Developed brand identity, social media strategy, and content calendar for a meal prep startup. Grew Instagram from 0 to 25K followers in 6 months with a content-first approach.",
     results: ["25K followers in 6mo", "12% engagement rate", "3x revenue growth"],
-    gradient: "from-glow-warm/20 to-primary/10",
+    gradient: "from-accent/10 to-primary/10",
     images: [
       { label: "Brand Identity", aspect: "square" },
       { label: "Instagram Feed", aspect: "portrait" },
@@ -35,7 +35,7 @@ const projects = [
     category: "Landing Pages • Ads • Copywriting",
     description: "Created high-converting landing pages and ad funnels for a financial advisory firm. Achieved a 7.2% conversion rate with persuasive copy and optimized user journeys.",
     results: ["7.2% conversion rate", "Cost per lead ↓ 58%", "$180K ad spend managed"],
-    gradient: "from-primary/15 to-primary/5",
+    gradient: "from-primary/10 to-primary/5",
     images: [
       { label: "Landing Page", aspect: "landscape" },
       { label: "Ad Creative", aspect: "square" },
@@ -98,11 +98,14 @@ const FeaturedProjects = () => {
   return (
     <section id="projects" className="section-padding bg-surface/50">
       <div className="container max-w-5xl">
-        <div className="text-center mb-10">
+        <div className="text-center mb-12">
           <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-3">Featured Work</p>
           <h2 className="text-3xl md:text-5xl font-bold font-heading">
             Favorite <span className="text-gradient">Projects</span>
           </h2>
+          <p className="text-xs text-muted-foreground/70 mt-3 italic max-w-md mx-auto">
+            Case studies with measurable results are the #1 trust signal for B2B buyers — DemandGen, 2026
+          </p>
         </div>
 
         {/* Case Study Carousel */}
@@ -134,7 +137,7 @@ const FeaturedProjects = () => {
                   ))}
                 </div>
 
-                <div className="flex flex-wrap gap-2 mt-5">
+                <div className="flex flex-wrap gap-2 mt-6">
                   {p.results.map((r) => (
                     <div key={r} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20">
                       <TrendingUp className="w-3 h-3 text-primary" />
@@ -146,20 +149,20 @@ const FeaturedProjects = () => {
             </motion.div>
           </AnimatePresence>
 
-          <button onClick={prev} className="absolute left-0 md:-left-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-secondary/80 hover:bg-secondary flex items-center justify-center text-foreground transition-colors z-10">
+          <button onClick={prev} className="absolute left-0 md:-left-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-secondary hover:bg-secondary/80 flex items-center justify-center text-foreground transition-colors z-10">
             <ChevronLeft className="w-4 h-4" />
           </button>
-          <button onClick={next} className="absolute right-0 md:-right-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-secondary/80 hover:bg-secondary flex items-center justify-center text-foreground transition-colors z-10">
+          <button onClick={next} className="absolute right-0 md:-right-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-secondary hover:bg-secondary/80 flex items-center justify-center text-foreground transition-colors z-10">
             <ChevronRight className="w-4 h-4" />
           </button>
 
-          <div className="flex justify-center gap-1.5 mt-5">
+          <div className="flex justify-center gap-1.5 mt-6">
             {projects.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrent(i)}
                 className={`h-1.5 rounded-full transition-all duration-300 ${
-                  i === current ? "bg-primary w-5" : "bg-muted-foreground/30 w-1.5 hover:bg-muted-foreground/50"
+                  i === current ? "bg-primary w-6" : "bg-muted-foreground/30 w-1.5 hover:bg-muted-foreground/50"
                 }`}
               />
             ))}
@@ -167,8 +170,8 @@ const FeaturedProjects = () => {
         </div>
 
         {/* Portfolio by Category — Accordion */}
-        <div className="mt-10">
-          <h3 className="text-center font-heading text-xl font-bold text-foreground mb-5">
+        <div className="mt-12">
+          <h3 className="text-center font-heading text-xl font-bold text-foreground mb-6">
             Work by <span className="text-gradient">Category</span>
           </h3>
           <div className="glass rounded-2xl p-5 md:p-6">

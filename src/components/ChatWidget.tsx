@@ -11,7 +11,7 @@ const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
 const ChatWidget = () => {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([
-    { role: "assistant", content: "Hey! 👋 I'm the CreativeEdge AI assistant. Ask me about services, pricing, or how I can help grow your brand!" },
+    { role: "assistant", content: "Hey! 👋 I'm the KreativeKris AI assistant. Ask me about services, pricing, or how I can help grow your brand!" },
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -100,11 +100,11 @@ const ChatWidget = () => {
             animate={{ scale: 1 }}
             exit={{ scale: 0 }}
             onClick={() => setOpen(true)}
-            className="fixed bottom-6 left-6 z-50 w-14 h-14 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-[0_0_25px_hsl(var(--primary)/0.4)] hover:shadow-[0_0_35px_hsl(var(--primary)/0.6)] transition-shadow"
+            className="fixed bottom-6 left-6 z-50 w-14 h-14 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow"
             aria-label="Open chat"
           >
             <MessageCircle className="w-6 h-6" />
-            <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-[hsl(var(--glow-warm))] animate-pulse" />
+            <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-accent animate-pulse" />
           </motion.button>
         )}
       </AnimatePresence>
@@ -126,7 +126,7 @@ const ChatWidget = () => {
                   <Sparkles className="w-4 h-4 text-primary" />
                 </div>
                 <div>
-                  <p className="font-heading font-semibold text-sm text-foreground">CreativeEdge AI</p>
+                  <p className="font-heading font-semibold text-sm text-foreground">KreativeKris AI</p>
                   <p className="text-[10px] text-primary flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary inline-block" /> Online
                   </p>
@@ -134,7 +134,7 @@ const ChatWidget = () => {
               </div>
               <button
                 onClick={() => setOpen(false)}
-                className="w-7 h-7 rounded-full bg-secondary/80 hover:bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
+                className="w-7 h-7 rounded-full bg-secondary hover:bg-secondary/80 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
                 aria-label="Close chat"
               >
                 <X className="w-3.5 h-3.5" />
@@ -154,13 +154,13 @@ const ChatWidget = () => {
                     className={`max-w-[80%] rounded-xl px-3 py-2 text-xs leading-relaxed ${
                       m.role === "user"
                         ? "bg-primary text-primary-foreground rounded-br-sm"
-                        : "bg-secondary/80 text-foreground rounded-bl-sm"
+                        : "bg-secondary text-foreground rounded-bl-sm"
                     }`}
                   >
                     {m.content}
                   </div>
                   {m.role === "user" && (
-                    <div className="w-6 h-6 rounded-full bg-secondary/80 flex items-center justify-center shrink-0 mt-0.5">
+                    <div className="w-6 h-6 rounded-full bg-secondary flex items-center justify-center shrink-0 mt-0.5">
                       <User className="w-3 h-3 text-muted-foreground" />
                     </div>
                   )}
@@ -171,7 +171,7 @@ const ChatWidget = () => {
                   <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
                     <Bot className="w-3 h-3 text-primary" />
                   </div>
-                  <div className="bg-secondary/80 rounded-xl rounded-bl-sm px-3 py-2">
+                  <div className="bg-secondary rounded-xl rounded-bl-sm px-3 py-2">
                     <div className="flex gap-1">
                       <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground animate-bounce" style={{ animationDelay: "0ms" }} />
                       <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground animate-bounce" style={{ animationDelay: "150ms" }} />

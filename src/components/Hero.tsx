@@ -53,23 +53,23 @@ const Hero = () => {
           muted
           loop
           playsInline
-          className="w-full h-full object-cover opacity-50"
+          className="w-full h-full object-cover opacity-20"
           aria-hidden="true"
         >
           <source src={heroVideo} type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/70 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/60 to-background" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 container max-w-5xl text-center px-4 sm:px-6">
         <MobileVisitorWidget />
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6 sm:mb-8 animate-slide-up">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8 animate-slide-up">
           <Sparkles className="w-4 h-4 text-primary" />
           <span className="text-sm text-muted-foreground">AI-Powered Creative Marketing</span>
         </div>
 
-        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold font-heading leading-tight mb-4 sm:mb-6 animate-slide-up" style={{ animationDelay: "0.1s" }}>
+        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold font-heading leading-tight mb-6 animate-slide-up" style={{ animationDelay: "0.1s" }}>
           Marketing That{" "}
           <span className="text-gradient inline-block min-w-[3ch]">
             {typewriterText}
@@ -80,7 +80,7 @@ const Hero = () => {
         <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-4 animate-slide-up" style={{ animationDelay: "0.2s" }}>
           Strategist. Creator. Optimizer. I craft data-driven campaigns, build high-converting websites, and grow brands through compelling content and smart advertising.
         </p>
-        <p className="text-sm text-muted-foreground/70 max-w-xl mx-auto mb-10 animate-slide-up italic" style={{ animationDelay: "0.25s" }}>
+        <p className="text-sm text-muted-foreground/70 max-w-xl mx-auto mb-12 animate-slide-up italic" style={{ animationDelay: "0.25s" }}>
           In 2026, global digital ad spend will surpass <span className="text-primary font-medium">$870 billion</span> — is your brand capturing its share?
         </p>
 
@@ -94,7 +94,7 @@ const Hero = () => {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-3 gap-4 sm:gap-8 mt-12 sm:mt-20 max-w-lg mx-auto animate-slide-up" style={{ animationDelay: "0.4s" }}>
+        <div className="grid grid-cols-3 gap-4 sm:gap-8 mt-16 sm:mt-20 max-w-lg mx-auto animate-slide-up" style={{ animationDelay: "0.4s" }}>
           {[
             { value: "50+", label: "Projects" },
             { value: "8+", label: "Years Experience" },

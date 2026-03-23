@@ -23,13 +23,13 @@ const Services = () => {
   return (
     <section id="services" className="section-padding" aria-label="Services">
       <div className="container max-w-6xl">
-        <div className="text-center mb-10 md:mb-14">
-          <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-3">What I Do</p>
+        <div className="text-center mb-12 md:mb-16">
+          <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-3">What I Offer</p>
           <h2 className="text-3xl md:text-5xl font-bold font-heading">
-            Areas of <span className="text-gradient">Expertise</span>
+            My <span className="text-gradient">Services</span>
           </h2>
-          <p className="text-muted-foreground mt-3 max-w-lg mx-auto text-sm">
-            78% of marketers now use AI-powered tools to drive results. I combine AI efficiency with human creativity.
+          <p className="text-muted-foreground mt-4 max-w-lg mx-auto text-sm">
+            78% of marketers now use AI-powered tools to drive results. I combine AI efficiency with human creativity to deliver measurable growth.
           </p>
         </div>
 
@@ -41,18 +41,18 @@ const Services = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -40 }}
               transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
             >
               {visible.map((s) => (
                 <div
                   key={s.title}
-                  className="glass rounded-xl p-5 group cursor-pointer card-hover"
+                  className="glass rounded-xl p-6 group cursor-pointer card-hover"
                 >
-                  <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
                     <s.icon className="w-5 h-5 text-primary" />
                   </div>
-                  <h3 className="font-heading font-semibold text-foreground text-sm mb-1.5">{s.title}</h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed mb-2">{s.desc}</p>
+                  <h3 className="font-heading font-semibold text-foreground text-sm mb-2">{s.title}</h3>
+                  <p className="text-xs text-muted-foreground leading-relaxed mb-3">{s.desc}</p>
                   <p className="text-[11px] text-primary/70 italic">📊 {s.stat}</p>
                 </div>
               ))}
@@ -60,10 +60,10 @@ const Services = () => {
           </AnimatePresence>
 
           {/* Navigation */}
-          <div className="flex items-center justify-center gap-3 mt-6">
+          <div className="flex items-center justify-center gap-3 mt-8">
             <button
               onClick={() => setPage((p) => (p === 0 ? totalPages - 1 : p - 1))}
-              className="w-8 h-8 rounded-full bg-secondary/80 hover:bg-secondary flex items-center justify-center text-foreground transition-colors"
+              className="w-9 h-9 rounded-full bg-secondary hover:bg-secondary/80 flex items-center justify-center text-foreground transition-colors"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
@@ -73,14 +73,14 @@ const Services = () => {
                   key={i}
                   onClick={() => setPage(i)}
                   className={`h-1.5 rounded-full transition-all duration-300 ${
-                    i === page ? "bg-primary w-5" : "bg-muted-foreground/30 w-1.5 hover:bg-muted-foreground/50"
+                    i === page ? "bg-primary w-6" : "bg-muted-foreground/30 w-1.5 hover:bg-muted-foreground/50"
                   }`}
                 />
               ))}
             </div>
             <button
               onClick={() => setPage((p) => (p === totalPages - 1 ? 0 : p + 1))}
-              className="w-8 h-8 rounded-full bg-secondary/80 hover:bg-secondary flex items-center justify-center text-foreground transition-colors"
+              className="w-9 h-9 rounded-full bg-secondary hover:bg-secondary/80 flex items-center justify-center text-foreground transition-colors"
             >
               <ChevronRight className="w-4 h-4" />
             </button>

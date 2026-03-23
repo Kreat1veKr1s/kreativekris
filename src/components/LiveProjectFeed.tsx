@@ -12,11 +12,10 @@ const activities = [
 ];
 
 const LiveProjectFeed = () => {
-  // Duplicate for seamless loop
   const doubled = [...activities, ...activities];
 
   return (
-    <section className="py-6 overflow-hidden">
+    <section className="py-8 overflow-hidden">
       <div className="container max-w-6xl mb-4">
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
@@ -24,14 +23,14 @@ const LiveProjectFeed = () => {
         </div>
       </div>
       <div className="relative overflow-hidden">
-        <div className="flex animate-marquee gap-4" style={{ width: "max-content" }}>
+        <div className="flex animate-marquee-slow gap-4" style={{ width: "max-content" }}>
           {doubled.map((a, i) => (
             <div
               key={i}
-              className="flex items-center gap-3 glass rounded-full px-4 py-2.5 shrink-0"
+              className="flex items-center gap-3 glass rounded-full px-5 py-3 shrink-0"
             >
-              <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                <a.icon className="w-3.5 h-3.5 text-primary" />
+              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                <a.icon className="w-4 h-4 text-primary" />
               </div>
               <span className="text-xs font-medium text-foreground whitespace-nowrap">{a.text}</span>
               <span className="text-[10px] text-muted-foreground whitespace-nowrap">{a.time}</span>
