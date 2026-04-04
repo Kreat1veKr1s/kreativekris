@@ -163,7 +163,7 @@ const VisitorWidget = ({ inline = false }: { inline?: boolean }) => {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.8 }}
-        className="fixed top-20 right-4 z-40 hidden md:flex"
+        className={inline ? "inline-flex" : "fixed top-20 right-4 z-40 hidden md:flex"}
       >
         <div className="glass rounded-xl px-4 py-3 flex items-center gap-3 text-xs">
           <div className="flex items-center gap-1.5 text-muted-foreground">
