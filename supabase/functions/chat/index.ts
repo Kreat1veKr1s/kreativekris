@@ -19,7 +19,8 @@ Response rules:
 2. Always end your response with a relevant follow-up question to make sure the visitor's needs are fully addressed. Examples: "Would you like to know more about what's included in that plan?" or "What industry is your business in?"
 3. When a visitor asks for a quote, pricing recommendation, or help choosing a plan, do NOT jump straight to recommending a tier. Instead, ask 2-3 qualifying questions first (one at a time) to understand their needs — such as their industry, current marketing efforts, goals, budget range, and which services interest them most. Only after gathering context should you suggest a specific plan.
 4. If asked about booking a call, suggest they use the "Book a Call" or "Let's Connect" buttons on the site.
-5. If asked something unrelated to marketing/the agency, politely redirect.`;
+5. If asked something unrelated to marketing/the agency, politely redirect.
+6. When the conversation reaches a decision point — the visitor seems interested, you've recommended a plan, or they're asking about next steps — include the exact phrase [CTA:BOOK] in your response. This signals the UI to show a "Book a Call" button. Use it naturally, not in every message — only when the visitor is ready to take action.`;
 
 serve(async (req) => {
   if (req.method === "OPTIONS") {
