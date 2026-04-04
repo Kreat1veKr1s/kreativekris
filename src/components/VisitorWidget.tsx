@@ -30,7 +30,7 @@ const weatherIcons: Record<string, typeof Sun> = {
   Haze: Wind,
 };
 
-const VisitorWidget = () => {
+const VisitorWidget = ({ inline = false }: { inline?: boolean }) => {
   const [data, setData] = useState<VisitorData | null>(null);
   const [currentTime, setCurrentTime] = useState("");
 
