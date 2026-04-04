@@ -11,7 +11,7 @@ const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
 const ChatWidget = () => {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([
-    { role: "assistant", content: "Hey! 👋 I'm the KreativeKris AI assistant. Ask me about services, pricing, or how I can help grow your brand!" },
+    { role: "assistant", content: "Hey there 👋 I'm the KreativeKris AI assistant. Feel free to ask me about our services, pricing, or how we can help grow your brand. What can I help you with?" },
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
