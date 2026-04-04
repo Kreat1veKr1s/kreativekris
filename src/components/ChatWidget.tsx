@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send, Bot, User, Sparkles } from "lucide-react";
+import { MessageCircle, X, Send, Bot, User, Sparkles, CalendarCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -157,7 +157,17 @@ const ChatWidget = () => {
                         : "bg-secondary text-foreground rounded-bl-sm"
                     }`}
                   >
-                    {m.content}
+                    {m.content.replace(/\[CTA:BOOK\]/g, "")}
+                    {m.role === "assistant" && m.content.includes("[CTA:BOOK]") && (
+                      <a
+                        href="#contact"
+                        onClick={() => setOpen(false)}
+                        className="flex items-center gap-1.5 mt-2 px-3 py-1.5 rounded-lg bg-primary text-primary-foreground text-xs font-medium hover:opacity-90 transition-opacity w-fit"
+                      >
+                        <CalendarCheck className="w-3 h-3" />
+                        Book a Call
+                      </a>
+                    )}
                   </div>
                   {m.role === "user" && (
                     <div className="w-6 h-6 rounded-full bg-secondary flex items-center justify-center shrink-0 mt-0.5">
