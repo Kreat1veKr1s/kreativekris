@@ -58,7 +58,7 @@ const Index = () => {
         })}</script>
       </Helmet>
       <Navbar />
-      <VisitorWidget />
+      
       <ScrollToTop />
       <GuidePopup />
       <ChatWidget />
