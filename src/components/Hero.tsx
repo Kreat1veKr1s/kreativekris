@@ -1,6 +1,7 @@
 import heroVideo from "@/assets/hero-video.mp4";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import VisitorWidget from "@/components/VisitorWidget";
 import MobileVisitorWidget from "@/components/MobileVisitorWidget";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
@@ -64,23 +65,24 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 container max-w-5xl text-center px-4 sm:px-6">
         <MobileVisitorWidget />
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8 animate-slide-up">
-          <Sparkles className="w-4 h-4 text-primary" />
-          <span className="text-sm text-muted-foreground">AI-Powered Creative Marketing</span>
+        <div className="mb-6 animate-slide-up">
+          <VisitorWidget inline />
         </div>
 
-        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold font-heading leading-tight mb-6 animate-slide-up" style={{ animationDelay: "0.1s" }}>
-          Marketing That{" "}
-          <span className="text-gradient inline-block min-w-[3ch]">
-            {typewriterText}
-            <span className="animate-pulse text-primary">|</span>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-heading leading-tight mb-5 animate-slide-up h-[2.6em] flex items-center justify-center" style={{ animationDelay: "0.1s" }}>
+          <span>
+            Marketing That{" "}
+            <span className="text-gradient inline-block min-w-[3ch]">
+              {typewriterText}
+              <span className="animate-pulse text-primary">|</span>
+            </span>
           </span>
         </h1>
 
-        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-4 animate-slide-up" style={{ animationDelay: "0.2s" }}>
+        <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-3 animate-slide-up" style={{ animationDelay: "0.2s" }}>
           Strategist. Creator. Optimizer. I craft data-driven campaigns, build high-converting websites, and grow brands through compelling content and smart advertising.
         </p>
-        <p className="text-sm text-muted-foreground/70 max-w-xl mx-auto mb-12 animate-slide-up italic" style={{ animationDelay: "0.25s" }}>
+        <p className="text-xs sm:text-sm text-muted-foreground/70 max-w-xl mx-auto mb-10 animate-slide-up italic" style={{ animationDelay: "0.25s" }}>
           In 2026, global digital ad spend will surpass <span className="text-primary font-medium">$870 billion</span> — is your brand capturing its share?
         </p>
 
