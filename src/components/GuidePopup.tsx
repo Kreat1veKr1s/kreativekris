@@ -25,12 +25,21 @@ const GuidePopup = () => {
       }
     };
 
+    const handleVisibilityChange = () => {
+      if (!armed) return;
+      if (document.visibilityState === "hidden") {
+        setVisible(true);
+        document.removeEventListener("visibilitychange", handleVisibilityChange);
+      }
+    };
 
     document.addEventListener("mouseleave", handleMouseLeave);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
       clearTimeout(armTimer);
       document.removeEventListener("mouseleave", handleMouseLeave);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, []);
 
