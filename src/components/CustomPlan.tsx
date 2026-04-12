@@ -87,8 +87,8 @@ const CustomPlan = () => {
           </Accordion>
 
           <div className="mt-8 text-center">
-            <Button variant="hero" size="lg">
-              Let's Talk Options <ArrowRight className="w-5 h-5 ml-1" />
+            <Button variant="hero" size="lg" asChild>
+              <a href="tel:7029135236">Let's Talk Options <ArrowRight className="w-5 h-5 ml-1" /></a>
             </Button>
           </div>
         </div>
