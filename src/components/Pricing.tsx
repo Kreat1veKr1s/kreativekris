@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Rocket, Sprout, Trophy, Check, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
-import BookingDialog from "./BookingDialog";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -59,7 +58,6 @@ const plans = [
 
 const Pricing = () => {
   const [current, setCurrent] = useState(1);
-  const [bookingOpen, setBookingOpen] = useState(false);
 
   return (
     <section id="pricing" className="section-padding bg-surface/50">
@@ -77,7 +75,7 @@ const Pricing = () => {
         {/* Desktop grid */}
         <div className="hidden md:grid grid-cols-3 gap-6">
           {plans.map((plan) => (
-            <PricingCard key={plan.name} plan={plan} onBook={() => setBookingOpen(true)} />
+            <PricingCard key={plan.name} plan={plan} />
           ))}
         </div>
 
@@ -91,7 +89,7 @@ const Pricing = () => {
               exit={{ opacity: 0, x: -50 }}
               transition={{ duration: 0.25 }}
             >
-              <PricingCard plan={plans[current]} onBook={() => setBookingOpen(true)} />
+              <PricingCard plan={plans[current]} />
             </motion.div>
           </AnimatePresence>
 
@@ -122,12 +120,11 @@ const Pricing = () => {
           </div>
         </div>
       </div>
-      <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
     </section>
   );
 };
 
-const PricingCard = ({ plan, onBook }: { plan: typeof plans[0]; onBook: () => void }) => (
+const PricingCard = ({ plan }: { plan: typeof plans[0] }) => (
   <div
     className={`relative glass rounded-2xl p-6 md:p-8 flex flex-col ${
       plan.popular ? "border-primary/40 glow-border" : ""
@@ -160,9 +157,9 @@ const PricingCard = ({ plan, onBook }: { plan: typeof plans[0]; onBook: () => vo
     <Button
       variant={plan.popular ? "hero" : "hero-outline"}
       className="w-full"
-      onClick={onBook}
+      asChild
     >
-      Get Started <ArrowRight className="w-4 h-4 ml-1" />
+      <a href="https://calendar.google.com/calendar/appointments/AcZssZ1FqhARUyOuJU8fWs0Dcb5c2l5Xa3nMics-sMo=?gv=true" target="_blank" rel="noopener noreferrer">Get Started <ArrowRight className="w-4 h-4 ml-1" /></a>
     </Button>
   </div>
 );
