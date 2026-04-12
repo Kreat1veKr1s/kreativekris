@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Mail, Calendar } from "lucide-react";
+import BookingDialog from "./BookingDialog";
 
 const ContactCTA = () => {
   return (
