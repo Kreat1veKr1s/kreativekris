@@ -2,6 +2,7 @@ import heroVideo from "@/assets/hero-video.mp4";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import VisitorWidget from "@/components/VisitorWidget";
+import BookingDialog from "@/components/BookingDialog";
 import MobileVisitorWidget from "@/components/MobileVisitorWidget";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
@@ -44,6 +45,7 @@ const useTypewriter = (words: string[], typingSpeed = 80, deletingSpeed = 40, pa
 
 const Hero = () => {
   const typewriterText = useTypewriter(headlines);
+  const [bookingOpen, setBookingOpen] = useState(false);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden" role="banner">
@@ -90,9 +92,10 @@ const Hero = () => {
           <Button variant="hero" size="lg" className="text-base px-8 py-6" asChild>
             <a href="#gallery">View My Work <ArrowRight className="w-5 h-5 ml-1" /></a>
           </Button>
-          <Button variant="hero-outline" size="lg" className="text-base px-8 py-6" asChild>
-            <a href="https://calendar.google.com/calendar/appointments/AcZssZ1FqhARUyOuJU8fWs0Dcb5c2l5Xa3nMics-sMo=?gv=true" target="_blank" rel="noopener noreferrer">Let's Connect</a>
+          <Button variant="hero-outline" size="lg" className="text-base px-8 py-6" onClick={() => setBookingOpen(true)}>
+            Let's Connect
           </Button>
+          <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
         </div>
 
         {/* Stats */}

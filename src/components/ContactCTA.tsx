@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Mail, Calendar } from "lucide-react";
+import BookingDialog from "./BookingDialog";
 
 const ContactCTA = () => {
+  const [bookingOpen, setBookingOpen] = useState(false);
+
   return (
     <section id="contact" className="section-padding pb-10 md:pb-14">
       <div className="container max-w-4xl">
@@ -24,10 +28,11 @@ const ContactCTA = () => {
             <Button variant="hero" size="lg" className="text-base px-8 py-6" asChild>
               <a href="mailto:kris.grajeda@gmail.com"><Mail className="w-5 h-5 mr-1" /> Get In Touch</a>
             </Button>
-            <Button variant="hero-outline" size="lg" className="text-base px-8 py-6" asChild>
-              <a href="https://calendar.google.com/calendar/appointments/AcZssZ1FqhARUyOuJU8fWs0Dcb5c2l5Xa3nMics-sMo=?gv=true" target="_blank" rel="noopener noreferrer"><Calendar className="w-5 h-5 mr-1" /> Book a Call</a>
+            <Button variant="hero-outline" size="lg" className="text-base px-8 py-6" onClick={() => setBookingOpen(true)}>
+              <Calendar className="w-5 h-5 mr-1" /> Book a Call
             </Button>
           </div>
+          <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
         </div>
       </div>
     </section>

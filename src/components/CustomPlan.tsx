@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import BookingDialog from "./BookingDialog";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const serviceGroups = [
@@ -46,6 +48,7 @@ const serviceGroups = [
 ];
 
 const CustomPlan = () => {
+  const [bookingOpen, setBookingOpen] = useState(false);
   return (
     <section className="section-padding bg-surface/50">
       <div className="container max-w-4xl">
@@ -87,9 +90,10 @@ const CustomPlan = () => {
           </Accordion>
 
           <div className="mt-8 text-center">
-            <Button variant="hero" size="lg" asChild>
-              <a href="https://calendar.google.com/calendar/appointments/AcZssZ1FqhARUyOuJU8fWs0Dcb5c2l5Xa3nMics-sMo=?gv=true" target="_blank" rel="noopener noreferrer">Let's Talk Options <ArrowRight className="w-5 h-5 ml-1" /></a>
+            <Button variant="hero" size="lg" onClick={() => setBookingOpen(true)}>
+              Let's Talk Options <ArrowRight className="w-5 h-5 ml-1" />
             </Button>
+            <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
           </div>
         </div>
       </div>

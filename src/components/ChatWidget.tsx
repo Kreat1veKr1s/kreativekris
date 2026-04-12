@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send, Bot, User, Sparkles, CalendarCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import BookingDialog from "./BookingDialog";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -10,6 +11,7 @@ const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
 
 const ChatWidget = () => {
   const [open, setOpen] = useState(false);
+  const [bookingOpen, setBookingOpen] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([
     { role: "assistant", content: "Hey there 👋 I'm the KreativeKris AI assistant. Feel free to ask me about our services, pricing, or how we can help grow your brand. What can I help you with?" },
   ]);
@@ -159,14 +161,13 @@ const ChatWidget = () => {
                   >
                     {m.content.replace(/\[CTA:BOOK\]/g, "")}
                     {m.role === "assistant" && m.content.includes("[CTA:BOOK]") && (
-                      <a
-                        href="https://calendar.google.com/calendar/appointments/AcZssZ1FqhARUyOuJU8fWs0Dcb5c2l5Xa3nMics-sMo=?gv=true" target="_blank" rel="noopener noreferrer"
-                        onClick={() => setOpen(false)}
+                      <button
+                        onClick={() => setBookingOpen(true)}
                         className="flex items-center gap-1.5 mt-2 px-3 py-1.5 rounded-lg bg-primary text-primary-foreground text-xs font-medium hover:opacity-90 transition-opacity w-fit"
                       >
                         <CalendarCheck className="w-3 h-3" />
                         Book a Call
-                      </a>
+                      </button>
                     )}
                   </div>
                   {m.role === "user" && (
@@ -211,6 +212,7 @@ const ChatWidget = () => {
           </motion.div>
         )}
       </AnimatePresence>
+      <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
     </>
   );
 };
