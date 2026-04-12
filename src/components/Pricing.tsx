@@ -122,11 +122,12 @@ const Pricing = () => {
           </div>
         </div>
       </div>
+      <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
     </section>
   );
 };
 
-const PricingCard = ({ plan }: { plan: typeof plans[0] }) => (
+const PricingCard = ({ plan, onBook }: { plan: typeof plans[0]; onBook: () => void }) => (
   <div
     className={`relative glass rounded-2xl p-6 md:p-8 flex flex-col ${
       plan.popular ? "border-primary/40 glow-border" : ""
@@ -159,9 +160,9 @@ const PricingCard = ({ plan }: { plan: typeof plans[0] }) => (
     <Button
       variant={plan.popular ? "hero" : "hero-outline"}
       className="w-full"
-      asChild
+      onClick={onBook}
     >
-      <a href="https://calendar.google.com/calendar/appointments/AcZssZ1FqhARUyOuJU8fWs0Dcb5c2l5Xa3nMics-sMo=?gv=true" target="_blank" rel="noopener noreferrer">Get Started <ArrowRight className="w-4 h-4 ml-1" /></a>
+      Get Started <ArrowRight className="w-4 h-4 ml-1" />
     </Button>
   </div>
 );
