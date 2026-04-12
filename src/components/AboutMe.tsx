@@ -196,14 +196,8 @@ const AboutMe = () => {
   const next = () => setCurrent((c) => (c === testimonials.length - 1 ? 0 : c + 1));
   const t = testimonials[current];
 
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => setProfileImage(reader.result as string);
-      reader.readAsDataURL(file);
-    }
-  };
+
+
 
   return (
     <section id="about" className="section-padding">
