@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Rocket, Sprout, Trophy, Check, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import BookingDialog from "./BookingDialog";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
