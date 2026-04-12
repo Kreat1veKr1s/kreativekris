@@ -212,6 +212,7 @@ const ChatWidget = () => {
           </motion.div>
         )}
       </AnimatePresence>
+      <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
     </>
   );
 };
