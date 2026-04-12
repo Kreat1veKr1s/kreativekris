@@ -11,9 +11,9 @@ const serviceGroups = [
       "Ad copywriting & creative design",
       "A/B testing (ads, headlines, CTAs, landing pages)",
       "Retargeting and remarketing campaigns",
-      "Shopify & YouTube Ads management",
+      "Shopify & Amazon ads management",
       "Display, Search, Performance Max campaigns",
-      "Social media ad management (Meta, TikTok, etc.)",
+      "Social media ad management (Meta, TikTok, LinkedIn, etc.)",
     ],
   },
   {
@@ -52,7 +52,7 @@ const CustomPlan = () => {
         <div className="text-center mb-12 md:mb-14">
           <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-3">À La Carte</p>
           <h2 className="text-4xl md:text-5xl font-bold font-heading">
-            Build Your <span className="text-gradient">Custom Plan</span>
+            Build Your <span className="text-gradient">Own Plan</span>
           </h2>
           <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
             Need something specific? Pick and choose from my full menu of marketing services.
@@ -75,7 +75,10 @@ const CustomPlan = () => {
                 <AccordionContent>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5 pt-1 pb-2">
                     {group.items.map((item) => (
-                      <div key={item} className="flex items-start gap-2.5 text-sm text-muted-foreground hover:text-foreground transition-colors py-1">
+                      <div
+                        key={item}
+                        className="flex items-start gap-2.5 text-sm text-muted-foreground hover:text-foreground transition-colors py-1"
+                      >
                         <span className="w-1.5 h-1.5 rounded-full bg-primary/50 shrink-0 mt-1.5" />
                         {item}
                       </div>

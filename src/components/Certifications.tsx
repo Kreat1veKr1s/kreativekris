@@ -15,13 +15,13 @@ const certifications = [
   },
   {
     title: "AI for Everyone",
-    year: "2024",
+    year: "2026",
     issuer: "DeepLearning.AI — Andrew Ng",
     link: "#",
   },
   {
     title: "AI Workplace Proficiency",
-    year: "2024",
+    year: "2025",
     issuer: "Superhuman AI",
     link: "#",
   },
@@ -36,17 +36,12 @@ const Certifications = () => {
           <h2 className="text-4xl md:text-5xl font-bold font-heading">
             Verified <span className="text-gradient">Expertise</span>
           </h2>
-          <p className="text-muted-foreground mt-4 max-w-lg mx-auto">
-            Industry-recognized credentials that back up my skills.
-          </p>
+          <p className="text-muted-foreground mt-4 max-w-lg mx-auto">Industry-recognized, in-demand credentials.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {certifications.map((cert) => (
-            <div
-              key={cert.title}
-              className="glass rounded-2xl overflow-hidden card-hover group"
-            >
+            <div key={cert.title} className="glass rounded-2xl overflow-hidden card-hover group">
               {/* Placeholder image area */}
               <div className="aspect-video w-full bg-muted/30 border-b border-border/30 flex items-center justify-center">
                 <div className="flex flex-col items-center gap-2 text-muted-foreground/40">

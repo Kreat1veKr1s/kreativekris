@@ -14,10 +14,11 @@ const ContactCTA = () => {
             Ready to <span className="text-gradient">Level Up</span> Your Marketing?
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto mb-4 relative z-10">
-            Let's discuss how I can help grow your brand, drive leads, and deliver measurable results.
+            Let's discuss how I can help grow your brand, drive leads, and deliver impactful results.
           </p>
           <p className="text-xs text-muted-foreground/60 italic max-w-md mx-auto mb-10 relative z-10">
-            Companies that invest in digital marketing see an average <span className="text-primary">2.8x revenue growth</span> vs. those that don't — McKinsey, 2026
+            Companies that invest in digital marketing see an average{" "}
+            <span className="text-primary">2.8x revenue growth</span> vs. those that don't — McKinsey, 2026
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">

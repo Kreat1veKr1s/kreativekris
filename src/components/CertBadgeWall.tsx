@@ -3,12 +3,48 @@ import { Award, ExternalLink } from "lucide-react";
 import { useState } from "react";
 
 const badges = [
-  { title: "Google Analytics IQ", issuer: "Google", year: "2025", color: "from-[hsl(45_90%_55%)] to-[hsl(35_90%_45%)]", link: "#" },
-  { title: "Google Search GA4", issuer: "Google", year: "2024", color: "from-[hsl(210_80%_55%)] to-[hsl(220_80%_45%)]", link: "#" },
-  { title: "AI for Everyone", issuer: "DeepLearning.AI", year: "2024", color: "from-[hsl(255_45%_55%)] to-[hsl(218_70%_55%)]", link: "#" },
-  { title: "AI Workplace Proficiency", issuer: "Superhuman AI", year: "2024", color: "from-[hsl(255_45%_55%)] to-[hsl(218_70%_55%)]", link: "#" },
-  { title: "Meta Blueprint", issuer: "Meta", year: "2024", color: "from-[hsl(210_90%_55%)] to-[hsl(230_80%_50%)]", link: "#" },
-  { title: "HubSpot Inbound Marketing", issuer: "HubSpot", year: "2023", color: "from-[hsl(15_90%_55%)] to-[hsl(25_85%_50%)]", link: "#" },
+  {
+    title: "Google Analytics IQ",
+    issuer: "Google",
+    year: "2025",
+    color: "from-[hsl(45_90%_55%)] to-[hsl(35_90%_45%)]",
+    link: "#",
+  },
+  {
+    title: "Google Search GA4",
+    issuer: "Google",
+    year: "2024",
+    color: "from-[hsl(210_80%_55%)] to-[hsl(220_80%_45%)]",
+    link: "#",
+  },
+  {
+    title: "AI for Everyone",
+    issuer: "DeepLearning.AI",
+    year: "2026",
+    color: "from-[hsl(255_45%_55%)] to-[hsl(218_70%_55%)]",
+    link: "#",
+  },
+  {
+    title: "AI Workplace Proficiency",
+    issuer: "Superhuman AI",
+    year: "2025",
+    color: "from-[hsl(255_45%_55%)] to-[hsl(218_70%_55%)]",
+    link: "#",
+  },
+  {
+    title: "Meta Blueprint",
+    issuer: "Meta",
+    year: "2024",
+    color: "from-[hsl(210_90%_55%)] to-[hsl(230_80%_50%)]",
+    link: "#",
+  },
+  {
+    title: "HubSpot Inbound Marketing",
+    issuer: "HubSpot",
+    year: "2023",
+    color: "from-[hsl(15_90%_55%)] to-[hsl(25_85%_50%)]",
+    link: "#",
+  },
 ];
 
 const CertBadgeWall = () => {
@@ -41,10 +77,14 @@ const CertBadgeWall = () => {
               transition={{ type: "spring", stiffness: 400, damping: 20 }}
             >
               <div className="glass rounded-xl p-4 flex flex-col items-center text-center gap-2 h-full border border-transparent group-hover:border-primary/30 transition-colors">
-                <div className={`w-14 h-14 rounded-full bg-gradient-to-br ${badge.color} flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow`}>
+                <div
+                  className={`w-14 h-14 rounded-full bg-gradient-to-br ${badge.color} flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow`}
+                >
                   <Award className="w-6 h-6 text-white" />
                 </div>
-                <span className="text-[11px] font-heading font-semibold text-foreground leading-tight mt-1">{badge.title}</span>
+                <span className="text-[11px] font-heading font-semibold text-foreground leading-tight mt-1">
+                  {badge.title}
+                </span>
                 <span className="text-[10px] text-muted-foreground">{badge.year}</span>
 
                 {hoveredIndex === i && (
