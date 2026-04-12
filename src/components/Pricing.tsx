@@ -77,7 +77,7 @@ const Pricing = () => {
         {/* Desktop grid */}
         <div className="hidden md:grid grid-cols-3 gap-6">
           {plans.map((plan) => (
-            <PricingCard key={plan.name} plan={plan} />
+            <PricingCard key={plan.name} plan={plan} onBook={() => setBookingOpen(true)} />
           ))}
         </div>
 
@@ -91,7 +91,7 @@ const Pricing = () => {
               exit={{ opacity: 0, x: -50 }}
               transition={{ duration: 0.25 }}
             >
-              <PricingCard plan={plans[current]} />
+              <PricingCard plan={plans[current]} onBook={() => setBookingOpen(true)} />
             </motion.div>
           </AnimatePresence>
 
