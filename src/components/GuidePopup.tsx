@@ -27,12 +27,10 @@ const GuidePopup = () => {
 
 
     document.addEventListener("mouseleave", handleMouseLeave);
-    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
       clearTimeout(armTimer);
       document.removeEventListener("mouseleave", handleMouseLeave);
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, []);
 

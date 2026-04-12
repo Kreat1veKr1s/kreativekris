@@ -45,6 +45,7 @@ const useTypewriter = (words: string[], typingSpeed = 80, deletingSpeed = 40, pa
 
 const Hero = () => {
   const typewriterText = useTypewriter(headlines);
+  const [bookingOpen, setBookingOpen] = useState(false);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden" role="banner">
