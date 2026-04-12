@@ -59,6 +59,7 @@ const plans = [
 
 const Pricing = () => {
   const [current, setCurrent] = useState(1);
+  const [bookingOpen, setBookingOpen] = useState(false);
 
   return (
     <section id="pricing" className="section-padding bg-surface/50">
