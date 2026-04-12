@@ -87,11 +87,11 @@ const Hero = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up" style={{ animationDelay: "0.3s" }}>
-          <Button variant="hero" size="lg" className="text-base px-8 py-6" asChild>
-            <a href="#gallery">View My Work <ArrowRight className="w-5 h-5 ml-1" /></a>
+          <Button variant="hero" size="lg" className="text-base px-8 py-6">
+            View My Work <ArrowRight className="w-5 h-5 ml-1" />
           </Button>
-          <Button variant="hero-outline" size="lg" className="text-base px-8 py-6" asChild>
-            <a href="https://calendar.google.com/calendar/appointments/AcZssZ1FqhARUyOuJU8fWs0Dcb5c2l5Xa3nMics-sMo=?gv=true" target="_blank" rel="noopener noreferrer">Let's Connect</a>
+          <Button variant="hero-outline" size="lg" className="text-base px-8 py-6">
+            Let's Connect
           </Button>
         </div>
 
