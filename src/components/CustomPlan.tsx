@@ -88,7 +88,7 @@ const CustomPlan = () => {
 
           <div className="mt-8 text-center">
             <Button variant="hero" size="lg" asChild>
-              <a href="tel:7029135236">Let's Talk Options <ArrowRight className="w-5 h-5 ml-1" /></a>
+              <a href="https://calendar.google.com/calendar/appointments/AcZssZ1FqhARUyOuJU8fWs0Dcb5c2l5Xa3nMics-sMo=?gv=true" target="_blank" rel="noopener noreferrer">Let's Talk Options <ArrowRight className="w-5 h-5 ml-1" /></a>
             </Button>
           </div>
         </div>

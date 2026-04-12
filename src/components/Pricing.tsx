@@ -159,7 +159,7 @@ const PricingCard = ({ plan }: { plan: typeof plans[0] }) => (
       className="w-full"
       asChild
     >
-      <a href="tel:7029135236">Get Started <ArrowRight className="w-4 h-4 ml-1" /></a>
+      <a href="https://calendar.google.com/calendar/appointments/AcZssZ1FqhARUyOuJU8fWs0Dcb5c2l5Xa3nMics-sMo=?gv=true" target="_blank" rel="noopener noreferrer">Get Started <ArrowRight className="w-4 h-4 ml-1" /></a>
     </Button>
   </div>
 );

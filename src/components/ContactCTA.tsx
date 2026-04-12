@@ -25,7 +25,7 @@ const ContactCTA = () => {
               <a href="mailto:kris.grajeda@gmail.com"><Mail className="w-5 h-5 mr-1" /> Get In Touch</a>
             </Button>
             <Button variant="hero-outline" size="lg" className="text-base px-8 py-6" asChild>
-              <a href="tel:7029135236"><Calendar className="w-5 h-5 mr-1" /> Book a Call</a>
+              <a href="https://calendar.google.com/calendar/appointments/AcZssZ1FqhARUyOuJU8fWs0Dcb5c2l5Xa3nMics-sMo=?gv=true" target="_blank" rel="noopener noreferrer"><Calendar className="w-5 h-5 mr-1" /> Book a Call</a>
             </Button>
           </div>
         </div>
