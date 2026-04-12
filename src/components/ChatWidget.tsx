@@ -160,7 +160,7 @@ const ChatWidget = () => {
                     {m.content.replace(/\[CTA:BOOK\]/g, "")}
                     {m.role === "assistant" && m.content.includes("[CTA:BOOK]") && (
                       <a
-                        href="#contact"
+                        href="tel:7029135236"
                         onClick={() => setOpen(false)}
                         className="flex items-center gap-1.5 mt-2 px-3 py-1.5 rounded-lg bg-primary text-primary-foreground text-xs font-medium hover:opacity-90 transition-opacity w-fit"
                       >
