@@ -2,6 +2,7 @@ import heroVideo from "@/assets/hero-video.mp4";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import VisitorWidget from "@/components/VisitorWidget";
+import BookingDialog from "@/components/BookingDialog";
 import MobileVisitorWidget from "@/components/MobileVisitorWidget";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
