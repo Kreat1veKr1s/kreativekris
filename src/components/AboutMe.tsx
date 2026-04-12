@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { Zap, Target, Rocket, Brain, Award, TrendingUp, Star, ExternalLink, ChevronLeft, ChevronRight, Sparkles, Wrench, Palette as PaletteIcon, BarChart3, Video, Shield, Globe, BadgeCheck, ThumbsUp, DollarSign } from "lucide-react";
-import profilePhoto from "@/assets/kris-profile.png";
+import { Zap, Target, Rocket, Brain, Award, TrendingUp, Star, ExternalLink, ChevronLeft, ChevronRight, Sparkles, Wrench, Palette as PaletteIcon, BarChart3, Video, Camera, Shield, Globe, BadgeCheck, ThumbsUp, DollarSign } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const profileBadges = [
@@ -192,12 +191,20 @@ const StarRating = ({ rating }: { rating: number }) => (
 
 const AboutMe = () => {
   const [current, setCurrent] = useState(0);
+  const [profileImage, setProfileImage] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const prev = () => setCurrent((c) => (c === 0 ? testimonials.length - 1 : c - 1));
   const next = () => setCurrent((c) => (c === testimonials.length - 1 ? 0 : c + 1));
   const t = testimonials[current];
 
-
-
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => setProfileImage(reader.result as string);
+      reader.readAsDataURL(file);
+    }
+  };
 
   return (
     <section id="about" className="section-padding">
@@ -226,8 +233,25 @@ const AboutMe = () => {
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[hsl(255_45%_55%)] to-[hsl(218_70%_55%)]" />
               
               <div className="flex flex-col sm:flex-row items-center gap-5">
-                <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden bg-primary/5 shrink-0 border-2 border-primary/20">
-                  <img src={profilePhoto} alt="KreativeKris profile" className="w-full h-full object-cover" />
+                <div
+                  onClick={() => fileInputRef.current?.click()}
+                  className="relative w-32 h-32 md:w-40 md:h-40 rounded-2xl border-2 border-dashed border-primary/30 hover:border-primary/60 transition-colors cursor-pointer group overflow-hidden bg-primary/5 shrink-0"
+                >
+                  {profileImage ? (
+                    <img src={profileImage} alt="Profile" className="w-full h-full object-cover" />
+                  ) : (
+                    <div className="flex flex-col items-center justify-center h-full text-muted-foreground group-hover:text-primary transition-colors">
+                      <Camera className="w-7 h-7 mb-1.5" />
+                      <span className="text-xs font-medium">Upload Photo</span>
+                    </div>
+                  )}
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                    className="hidden"
+                  />
                 </div>
 
                 {/* Highlight Badges */}
