@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Mail, Calendar } from "lucide-react";
+import BookingDialog from "./BookingDialog";
 
 const ContactCTA = () => {
+  const [bookingOpen, setBookingOpen] = useState(false);
+
   return (
     <section id="contact" className="section-padding pb-10 md:pb-14">
       <div className="container max-w-4xl">
@@ -14,21 +18,21 @@ const ContactCTA = () => {
             Ready to <span className="text-gradient">Level Up</span> Your Marketing?
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto mb-4 relative z-10">
-            Let's discuss how I can help grow your brand, drive leads, and deliver impactful results.
+            Let's discuss how I can help grow your brand, drive leads, and deliver measurable results.
           </p>
           <p className="text-xs text-muted-foreground/60 italic max-w-md mx-auto mb-10 relative z-10">
-            Companies that invest in digital marketing see an average{" "}
-            <span className="text-primary">2.8x revenue growth</span> vs. those that don't — McKinsey, 2026
+            Companies that invest in digital marketing see an average <span className="text-primary">2.8x revenue growth</span> vs. those that don't — McKinsey, 2026
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
-            <Button variant="hero" size="lg" className="text-base px-8 py-6">
-              <Mail className="w-5 h-5 mr-1" /> Get In Touch
+            <Button variant="hero" size="lg" className="text-base px-8 py-6" asChild>
+              <a href="mailto:kris.grajeda@gmail.com"><Mail className="w-5 h-5 mr-1" /> Get In Touch</a>
             </Button>
-            <Button variant="hero-outline" size="lg" className="text-base px-8 py-6">
+            <Button variant="hero-outline" size="lg" className="text-base px-8 py-6" onClick={() => setBookingOpen(true)}>
               <Calendar className="w-5 h-5 mr-1" /> Book a Call
             </Button>
           </div>
+          <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
         </div>
       </div>
     </section>

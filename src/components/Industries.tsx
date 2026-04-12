@@ -1,19 +1,4 @@
-import {
-  ShoppingBag,
-  Sparkles,
-  Store,
-  Coffee,
-  Wrench,
-  Music,
-  Heart,
-  Cpu,
-  Rocket,
-  DollarSign,
-  User,
-  Building,
-  Briefcase,
-  GlassWater,
-} from "lucide-react";
+import { ShoppingBag, Sparkles, Store, Coffee, Wrench, Music, Heart, Cpu, Rocket, DollarSign, User, Building, Briefcase, GlassWater } from "lucide-react";
 
 const industries = [
   { icon: ShoppingBag, name: "E-Commerce" },
@@ -21,12 +6,11 @@ const industries = [
   { icon: Store, name: "Retail" },
   { icon: Coffee, name: "Coffee Shops" },
   { icon: Building, name: "Local Services" },
-  { icon: Wrench, name: "HVAC / Trades" },
+  { icon: Wrench, name: "Blue Collar / Trades" },
   { icon: Music, name: "Nightlife" },
   { icon: Heart, name: "Non-Profit" },
   { icon: GlassWater, name: "Health & Wellness" },
   { icon: Cpu, name: "Tech" },
-  { icon: Race, name: "MotorSports" },
   { icon: Rocket, name: "Startups" },
   { icon: DollarSign, name: "Finance" },
   { icon: User, name: "Freelancers" },
@@ -53,7 +37,7 @@ const Industries = () => {
         <div className="relative overflow-hidden">
           <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-background to-transparent z-10" />
           <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-background to-transparent z-10" />
-
+          
           <div className="flex gap-3 animate-marquee">
             {doubled.map((ind, i) => (
               <div

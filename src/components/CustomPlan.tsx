@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import BookingDialog from "./BookingDialog";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const serviceGroups = [
@@ -11,9 +13,9 @@ const serviceGroups = [
       "Ad copywriting & creative design",
       "A/B testing (ads, headlines, CTAs, landing pages)",
       "Retargeting and remarketing campaigns",
-      "Shopify & Amazon ads management",
+      "Shopify & YouTube Ads management",
       "Display, Search, Performance Max campaigns",
-      "Social media ad management (Meta, TikTok, LinkedIn, etc.)",
+      "Social media ad management (Meta, TikTok, etc.)",
     ],
   },
   {
@@ -46,13 +48,14 @@ const serviceGroups = [
 ];
 
 const CustomPlan = () => {
+  const [bookingOpen, setBookingOpen] = useState(false);
   return (
     <section className="section-padding bg-surface/50">
       <div className="container max-w-4xl">
         <div className="text-center mb-12 md:mb-14">
           <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-3">À La Carte</p>
           <h2 className="text-4xl md:text-5xl font-bold font-heading">
-            Build Your <span className="text-gradient">Own Plan</span>
+            Build Your <span className="text-gradient">Custom Plan</span>
           </h2>
           <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
             Need something specific? Pick and choose from my full menu of marketing services.
@@ -75,10 +78,7 @@ const CustomPlan = () => {
                 <AccordionContent>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5 pt-1 pb-2">
                     {group.items.map((item) => (
-                      <div
-                        key={item}
-                        className="flex items-start gap-2.5 text-sm text-muted-foreground hover:text-foreground transition-colors py-1"
-                      >
+                      <div key={item} className="flex items-start gap-2.5 text-sm text-muted-foreground hover:text-foreground transition-colors py-1">
                         <span className="w-1.5 h-1.5 rounded-full bg-primary/50 shrink-0 mt-1.5" />
                         {item}
                       </div>
@@ -90,9 +90,10 @@ const CustomPlan = () => {
           </Accordion>
 
           <div className="mt-8 text-center">
-            <Button variant="hero" size="lg">
+            <Button variant="hero" size="lg" onClick={() => setBookingOpen(true)}>
               Let's Talk Options <ArrowRight className="w-5 h-5 ml-1" />
             </Button>
+            <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
           </div>
         </div>
       </div>

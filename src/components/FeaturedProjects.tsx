@@ -7,10 +7,9 @@ import { Globe, Megaphone, Palette, Share2, PenTool } from "lucide-react";
 
 const projects = [
   {
-    title: "DoorBusters Lock & Safe",
-    category: "Website Upgrade • Content & Copy • SEO • Google Ads",
-    description:
-      "Complete digital transformation for a luxury interior design firm. Built a stunning website, optimized for local SEO, and launched Google Ads campaigns that drove a 340% increase in qualified leads.",
+    title: "Luxe Living Interiors",
+    category: "Website • SEO • Google Ads",
+    description: "Complete digital transformation for a luxury interior design firm. Built a stunning website, optimized for local SEO, and launched Google Ads campaigns that drove a 340% increase in qualified leads.",
     results: ["340% more leads", "Page 1 rankings", "$2.1M pipeline generated"],
     gradient: "from-primary/10 to-accent/10",
     images: [
@@ -20,10 +19,9 @@ const projects = [
     ],
   },
   {
-    title: "SinCity MotoGirls",
-    category: "New Website • Content & Copy • Web Store",
-    description:
-      "Developed brand identity, social media strategy, and content calendar for a meal prep startup. Grew Instagram from 0 to 25K followers in 6 months with a content-first approach.",
+    title: "FreshBite Meal Prep",
+    category: "Social Media • Content • Branding",
+    description: "Developed brand identity, social media strategy, and content calendar for a meal prep startup. Grew Instagram from 0 to 25K followers in 6 months with a content-first approach.",
     results: ["25K followers in 6mo", "12% engagement rate", "3x revenue growth"],
     gradient: "from-accent/10 to-primary/10",
     images: [
@@ -33,10 +31,9 @@ const projects = [
     ],
   },
   {
-    title: "True Water",
-    category: "Website Upgrade • Web Store • Content & Copy • Branding",
-    description:
-      "Created high-converting landing pages and ad funnels for a financial advisory firm. Achieved a 7.2% conversion rate with persuasive copy and optimized user journeys.",
+    title: "Summit Financial Group",
+    category: "Landing Pages • Ads • Copywriting",
+    description: "Created high-converting landing pages and ad funnels for a financial advisory firm. Achieved a 7.2% conversion rate with persuasive copy and optimized user journeys.",
     results: ["7.2% conversion rate", "Cost per lead ↓ 58%", "$180K ad spend managed"],
     gradient: "from-primary/10 to-primary/5",
     images: [
@@ -48,64 +45,42 @@ const projects = [
 ];
 
 const portfolioCategories = [
-  {
-    icon: Globe,
-    title: "Websites",
-    items: [
-      { name: "Luxe Living Interiors", aspect: "landscape" },
-      { name: "Peak Fitness Studio", aspect: "landscape" },
-      { name: "GreenLeaf Organics", aspect: "landscape" },
-      { name: "Nova Tech Solutions", aspect: "landscape" },
-    ],
-  },
-  {
-    icon: Megaphone,
-    title: "Ads",
-    items: [
-      { name: "Summit Financial – Google Ads", aspect: "square" },
-      { name: "FreshBite – Meta Ads", aspect: "square" },
-      { name: "AutoPro Dealers – PPC", aspect: "square" },
-      { name: "Bloom Beauty – TikTok Ads", aspect: "portrait" },
-    ],
-  },
-  {
-    icon: Palette,
-    title: "Branding",
-    items: [
-      { name: "FreshBite Brand Identity", aspect: "square" },
-      { name: "Nova Tech Logo Suite", aspect: "square" },
-      { name: "Bloom Beauty Rebrand", aspect: "square" },
-      { name: "Summit Financial Guidelines", aspect: "landscape" },
-    ],
-  },
-  {
-    icon: Share2,
-    title: "Social Media",
-    items: [
-      { name: "FreshBite Instagram Growth", aspect: "portrait" },
-      { name: "Peak Fitness TikTok", aspect: "portrait" },
-      { name: "GreenLeaf Pinterest", aspect: "portrait" },
-      { name: "AutoPro Facebook Strategy", aspect: "square" },
-    ],
-  },
-  {
-    icon: PenTool,
-    title: "Content",
-    items: [
-      { name: "Luxe Living Blog Series", aspect: "landscape" },
-      { name: "Summit Financial Whitepapers", aspect: "landscape" },
-      { name: "FreshBite Recipe Videos", aspect: "landscape" },
-      { name: "Nova Tech Case Studies", aspect: "landscape" },
-    ],
-  },
+  { icon: Globe, title: "Websites", items: [
+    { name: "Luxe Living Interiors", aspect: "landscape" },
+    { name: "Peak Fitness Studio", aspect: "landscape" },
+    { name: "GreenLeaf Organics", aspect: "landscape" },
+    { name: "Nova Tech Solutions", aspect: "landscape" },
+  ]},
+  { icon: Megaphone, title: "Ads", items: [
+    { name: "Summit Financial – Google Ads", aspect: "square" },
+    { name: "FreshBite – Meta Ads", aspect: "square" },
+    { name: "AutoPro Dealers – PPC", aspect: "square" },
+    { name: "Bloom Beauty – TikTok Ads", aspect: "portrait" },
+  ]},
+  { icon: Palette, title: "Branding", items: [
+    { name: "FreshBite Brand Identity", aspect: "square" },
+    { name: "Nova Tech Logo Suite", aspect: "square" },
+    { name: "Bloom Beauty Rebrand", aspect: "square" },
+    { name: "Summit Financial Guidelines", aspect: "landscape" },
+  ]},
+  { icon: Share2, title: "Social Media", items: [
+    { name: "FreshBite Instagram Growth", aspect: "portrait" },
+    { name: "Peak Fitness TikTok", aspect: "portrait" },
+    { name: "GreenLeaf Pinterest", aspect: "portrait" },
+    { name: "AutoPro Facebook Strategy", aspect: "square" },
+  ]},
+  { icon: PenTool, title: "Content", items: [
+    { name: "Luxe Living Blog Series", aspect: "landscape" },
+    { name: "Summit Financial Whitepapers", aspect: "landscape" },
+    { name: "FreshBite Recipe Videos", aspect: "landscape" },
+    { name: "Nova Tech Case Studies", aspect: "landscape" },
+  ]},
 ];
 
 const ImagePlaceholder = ({ label, aspect }: { label: string; aspect: string }) => {
   const aspectClass = aspect === "portrait" ? "aspect-[3/4]" : aspect === "square" ? "aspect-square" : "aspect-video";
   return (
-    <div
-      className={`${aspectClass} w-full rounded-lg bg-muted/50 border-2 border-dashed border-border/60 flex flex-col items-center justify-center gap-2 hover:border-primary/40 hover:bg-muted/70 transition-all duration-300 cursor-pointer`}
-    >
+    <div className={`${aspectClass} w-full rounded-lg bg-muted/50 border-2 border-dashed border-border/60 flex flex-col items-center justify-center gap-2 hover:border-primary/40 hover:bg-muted/70 transition-all duration-300 cursor-pointer`}>
       <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
         <ImageIcon className="w-4 h-4 text-muted-foreground" />
       </div>
@@ -164,10 +139,7 @@ const FeaturedProjects = () => {
 
                 <div className="flex flex-wrap gap-2 mt-6">
                   {p.results.map((r) => (
-                    <div
-                      key={r}
-                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20"
-                    >
+                    <div key={r} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20">
                       <TrendingUp className="w-3 h-3 text-primary" />
                       <span className="text-xs font-medium text-foreground">{r}</span>
                     </div>
@@ -177,16 +149,10 @@ const FeaturedProjects = () => {
             </motion.div>
           </AnimatePresence>
 
-          <button
-            onClick={prev}
-            className="absolute left-0 md:-left-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-secondary hover:bg-secondary/80 flex items-center justify-center text-foreground transition-colors z-10"
-          >
+          <button onClick={prev} className="absolute left-0 md:-left-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-secondary hover:bg-secondary/80 flex items-center justify-center text-foreground transition-colors z-10">
             <ChevronLeft className="w-4 h-4" />
           </button>
-          <button
-            onClick={next}
-            className="absolute right-0 md:-right-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-secondary hover:bg-secondary/80 flex items-center justify-center text-foreground transition-colors z-10"
-          >
+          <button onClick={next} className="absolute right-0 md:-right-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-secondary hover:bg-secondary/80 flex items-center justify-center text-foreground transition-colors z-10">
             <ChevronRight className="w-4 h-4" />
           </button>
 
@@ -224,20 +190,13 @@ const FeaturedProjects = () => {
                   <AccordionContent>
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 pb-1">
                       {cat.items.map((item) => (
-                        <div
-                          key={item.name}
-                          className="group/item cursor-pointer flex flex-col gap-2 rounded-lg hover:bg-primary/5 transition-colors p-1.5"
-                        >
-                          <div
-                            className={`w-full rounded-lg bg-muted/50 border-2 border-dashed border-border/60 flex flex-col items-center justify-center gap-1.5 hover:border-primary/40 hover:bg-muted/70 transition-all duration-300 ${item.aspect === "portrait" ? "aspect-[3/4]" : item.aspect === "square" ? "aspect-square" : "aspect-video"}`}
-                          >
+                        <div key={item.name} className="group/item cursor-pointer flex flex-col gap-2 rounded-lg hover:bg-primary/5 transition-colors p-1.5">
+                          <div className={`w-full rounded-lg bg-muted/50 border-2 border-dashed border-border/60 flex flex-col items-center justify-center gap-1.5 hover:border-primary/40 hover:bg-muted/70 transition-all duration-300 ${item.aspect === "portrait" ? "aspect-[3/4]" : item.aspect === "square" ? "aspect-square" : "aspect-video"}`}>
                             <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center">
                               <ImageIcon className="w-3.5 h-3.5 text-muted-foreground/50" />
                             </div>
                           </div>
-                          <span className="text-xs text-muted-foreground group-hover/item:text-foreground transition-colors text-center leading-tight font-medium">
-                            {item.name}
-                          </span>
+                          <span className="text-xs text-muted-foreground group-hover/item:text-foreground transition-colors text-center leading-tight font-medium">{item.name}</span>
                         </div>
                       ))}
                     </div>

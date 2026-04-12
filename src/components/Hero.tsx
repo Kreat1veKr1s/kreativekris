@@ -2,11 +2,17 @@ import heroVideo from "@/assets/hero-video.mp4";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import VisitorWidget from "@/components/VisitorWidget";
+import BookingDialog from "@/components/BookingDialog";
 import MobileVisitorWidget from "@/components/MobileVisitorWidget";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
-const headlines = ["Moves People", "Drives Growth", "Converts Leads", "Builds Brands"];
+const headlines = [
+  "Moves People",
+  "Drives Growth",
+  "Converts Leads",
+  "Builds Brands",
+];
 
 const useTypewriter = (words: string[], typingSpeed = 80, deletingSpeed = 40, pauseDelay = 2000) => {
   const [wordIndex, setWordIndex] = useState(0);
@@ -16,23 +22,20 @@ const useTypewriter = (words: string[], typingSpeed = 80, deletingSpeed = 40, pa
   useEffect(() => {
     const current = words[wordIndex];
 
-    const timeout = setTimeout(
-      () => {
-        if (!isDeleting) {
-          setDisplayed(current.slice(0, displayed.length + 1));
-          if (displayed.length + 1 === current.length) {
-            setTimeout(() => setIsDeleting(true), pauseDelay);
-          }
-        } else {
-          setDisplayed(current.slice(0, displayed.length - 1));
-          if (displayed.length - 1 === 0) {
-            setIsDeleting(false);
-            setWordIndex((i) => (i + 1) % words.length);
-          }
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        setDisplayed(current.slice(0, displayed.length + 1));
+        if (displayed.length + 1 === current.length) {
+          setTimeout(() => setIsDeleting(true), pauseDelay);
         }
-      },
-      isDeleting ? deletingSpeed : typingSpeed,
-    );
+      } else {
+        setDisplayed(current.slice(0, displayed.length - 1));
+        if (displayed.length - 1 === 0) {
+          setIsDeleting(false);
+          setWordIndex((i) => (i + 1) % words.length);
+        }
+      }
+    }, isDeleting ? deletingSpeed : typingSpeed);
 
     return () => clearTimeout(timeout);
   }, [displayed, isDeleting, wordIndex, words, typingSpeed, deletingSpeed, pauseDelay]);
@@ -42,12 +45,20 @@ const useTypewriter = (words: string[], typingSpeed = 80, deletingSpeed = 40, pa
 
 const Hero = () => {
   const typewriterText = useTypewriter(headlines);
+  const [bookingOpen, setBookingOpen] = useState(false);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden" role="banner">
       {/* Video Background */}
       <div className="absolute inset-0">
-        <video autoPlay muted loop playsInline className="w-full h-full object-cover opacity-20" aria-hidden="true">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover opacity-20"
+          aria-hidden="true"
+        >
           <source src={heroVideo} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/60 to-background" />
@@ -60,10 +71,7 @@ const Hero = () => {
           <VisitorWidget inline />
         </div>
 
-        <h1
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-heading leading-tight mb-5 animate-slide-up h-[2.6em] flex items-center justify-center"
-          style={{ animationDelay: "0.1s" }}
-        >
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-heading leading-tight mb-5 animate-slide-up h-[2.6em] flex items-center justify-center" style={{ animationDelay: "0.1s" }}>
           <span>
             Marketing That{" "}
             <span className="text-gradient inline-block min-w-[3ch]">
@@ -73,38 +81,25 @@ const Hero = () => {
           </span>
         </h1>
 
-        <p
-          className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-3 animate-slide-up"
-          style={{ animationDelay: "0.2s" }}
-        >
-          I craft data-driven campaigns, build high-converting websites, and grow brand visibility through compelling
-          content and smart strategy.
+        <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-3 animate-slide-up" style={{ animationDelay: "0.2s" }}>
+          Strategist. Creator. Optimizer. I craft data-driven campaigns, build high-converting websites, and grow brands through compelling content and smart advertising.
         </p>
-        <p
-          className="text-xs sm:text-sm text-muted-foreground/70 max-w-xl mx-auto mb-10 animate-slide-up italic"
-          style={{ animationDelay: "0.25s" }}
-        >
-          In 2026, global digital ad spend will surpass <span className="text-primary font-medium">$870 billion</span> —
-          is your brand capturing its share?
+        <p className="text-xs sm:text-sm text-muted-foreground/70 max-w-xl mx-auto mb-10 animate-slide-up italic" style={{ animationDelay: "0.25s" }}>
+          In 2026, global digital ad spend will surpass <span className="text-primary font-medium">$870 billion</span> — is your brand capturing its share?
         </p>
 
-        <div
-          className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up"
-          style={{ animationDelay: "0.3s" }}
-        >
-          <Button variant="hero" size="lg" className="text-base px-8 py-6">
-            View My Work <ArrowRight className="w-5 h-5 ml-1" />
+        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up" style={{ animationDelay: "0.3s" }}>
+          <Button variant="hero" size="lg" className="text-base px-8 py-6" asChild>
+            <a href="#gallery">View My Work <ArrowRight className="w-5 h-5 ml-1" /></a>
           </Button>
-          <Button variant="hero-outline" size="lg" className="text-base px-8 py-6">
+          <Button variant="hero-outline" size="lg" className="text-base px-8 py-6" onClick={() => setBookingOpen(true)}>
             Let's Connect
           </Button>
+          <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
         </div>
 
         {/* Stats */}
-        <div
-          className="grid grid-cols-3 gap-4 sm:gap-8 mt-16 sm:mt-20 max-w-lg mx-auto animate-slide-up"
-          style={{ animationDelay: "0.4s" }}
-        >
+        <div className="grid grid-cols-3 gap-4 sm:gap-8 mt-16 sm:mt-20 max-w-lg mx-auto animate-slide-up" style={{ animationDelay: "0.4s" }}>
           {[
             { value: "50+", label: "Projects" },
             { value: "8+", label: "Years Experience" },
