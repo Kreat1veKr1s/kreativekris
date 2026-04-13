@@ -5,6 +5,36 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
+// --- In-memory rate limiter (per-IP, per edge function instance) ---
+const RATE_LIMIT_WINDOW_MS = 60_000; // 1 minute
+const MAX_REQUESTS_PER_WINDOW = 10;
+
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip);
+
+  if (!entry || now >= entry.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return false;
+  }
+
+  entry.count++;
+  if (entry.count > MAX_REQUESTS_PER_WINDOW) {
+    return true;
+  }
+  return false;
+}
+
+// Periodically clean up expired entries to prevent memory leaks
+setInterval(() => {
+  const now = Date.now();
+  for (const [ip, entry] of rateLimitMap) {
+    if (now >= entry.resetAt) rateLimitMap.delete(ip);
+  }
+}, 60_000);
+
 const SYSTEM_PROMPT = `You are the AI assistant for KreativeKris, an AI-powered creative marketing agency. You answer questions about services, pricing, and capabilities in a friendly, warm, and professional tone. Be cheerful but not overly excited — limit exclamation points to one per response at most. Prefer periods and calm confidence.
 
 Key facts:
@@ -27,8 +57,51 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
+  // Rate limit by client IP
+  const clientIp = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    req.headers.get("cf-connecting-ip") || "unknown";
+
+  if (isRateLimited(clientIp)) {
+    return new Response(JSON.stringify({ error: "Too many requests. Please wait a moment before sending another message." }), {
+      status: 429,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
+  }
+
   try {
-    const { messages } = await req.json();
+    const body = await req.json();
+    const messages = body?.messages;
+
+    // Input validation
+    if (!Array.isArray(messages) || messages.length === 0 || messages.length > 50) {
+      return new Response(JSON.stringify({ error: "Invalid request." }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    // Validate each message
+    for (const msg of messages) {
+      if (!msg || typeof msg.role !== "string" || typeof msg.content !== "string") {
+        return new Response(JSON.stringify({ error: "Invalid message format." }), {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      if (!["user", "assistant"].includes(msg.role)) {
+        return new Response(JSON.stringify({ error: "Invalid message role." }), {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      if (msg.content.length > 2000) {
+        return new Response(JSON.stringify({ error: "Message too long." }), {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+    }
+
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
@@ -61,8 +134,7 @@ serve(async (req) => {
           headers: { ...corsHeaders, "Content-Type": "application/json" },
         });
       }
-      const t = await response.text();
-      console.error("AI gateway error:", response.status, t);
+      console.error("AI gateway error:", response.status);
       return new Response(JSON.stringify({ error: "AI service error" }), {
         status: 500,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -73,8 +145,8 @@ serve(async (req) => {
       headers: { ...corsHeaders, "Content-Type": "text/event-stream" },
     });
   } catch (e) {
-    console.error("chat error:", e);
-    return new Response(JSON.stringify({ error: e instanceof Error ? e.message : "Unknown error" }), {
+    console.error("chat error:", e instanceof Error ? e.message : "Unknown error");
+    return new Response(JSON.stringify({ error: "Something went wrong. Please try again." }), {
       status: 500,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
