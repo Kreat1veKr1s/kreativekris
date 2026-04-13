@@ -97,7 +97,7 @@ const Hero = () => {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-3 gap-4 sm:gap-8 mt-16 sm:mt-20 max-w-lg mx-auto animate-slide-up" style={{ animationDelay: "0.4s" }}>
+        <div className="grid grid-cols-3 gap-4 sm:gap-8 mt-10 sm:mt-12 max-w-lg mx-auto animate-slide-up" style={{ animationDelay: "0.4s" }}>
           {[
             { value: "50+", label: "Projects" },
             { value: "8+", label: "Years Experience" },
