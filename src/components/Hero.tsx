@@ -64,11 +64,6 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 container max-w-5xl text-center px-4 sm:px-6">
-        <MobileVisitorWidget />
-        <div className="mb-6 animate-slide-up">
-          <VisitorWidget inline />
-        </div>
-
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-heading leading-tight mb-5 animate-slide-up h-[2.6em] flex items-center justify-center" style={{ animationDelay: "0.1s" }}>
           <span>
             Marketing That{" "}
@@ -94,6 +89,11 @@ const Hero = () => {
             Let's Connect
           </Button>
         </div>
+
+        {/* Visitor data widget — between CTAs and stats */}
+        <div className="mt-8 animate-slide-up flex justify-center" style={{ animationDelay: "0.35s" }}>
+          <VisitorWidget inline />
+          <MobileVisitorWidget />
 
         {/* Stats */}
         <div className="grid grid-cols-3 gap-4 sm:gap-8 mt-16 sm:mt-20 max-w-lg mx-auto animate-slide-up" style={{ animationDelay: "0.4s" }}>
