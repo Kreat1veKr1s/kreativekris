@@ -20,21 +20,23 @@ const useTypewriter = (words: string[], typingSpeed = 80, deletingSpeed = 40, pa
 
   useEffect(() => {
     const current = words[wordIndex];
+    const atEnd = !isDeleting && displayed.length === current.length;
+    const atStart = isDeleting && displayed.length === 0;
+
+    const delay = atEnd ? pauseDelay : isDeleting ? deletingSpeed : typingSpeed;
 
     const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        setDisplayed(current.slice(0, displayed.length + 1));
-        if (displayed.length + 1 === current.length) {
-          setTimeout(() => setIsDeleting(true), pauseDelay);
-        }
-      } else {
+      if (atEnd) {
+        setIsDeleting(true);
+      } else if (atStart) {
+        setIsDeleting(false);
+        setWordIndex((i) => (i + 1) % words.length);
+      } else if (isDeleting) {
         setDisplayed(current.slice(0, displayed.length - 1));
-        if (displayed.length - 1 === 0) {
-          setIsDeleting(false);
-          setWordIndex((i) => (i + 1) % words.length);
-        }
+      } else {
+        setDisplayed(current.slice(0, displayed.length + 1));
       }
-    }, isDeleting ? deletingSpeed : typingSpeed);
+    }, delay);
 
     return () => clearTimeout(timeout);
   }, [displayed, isDeleting, wordIndex, words, typingSpeed, deletingSpeed, pauseDelay]);
