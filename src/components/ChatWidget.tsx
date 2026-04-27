@@ -71,14 +71,20 @@ const ChatWidget = () => {
               const snapshot = assistantSoFar;
               setMessages((prev) => {
                 const last = prev[prev.length - 1];
-                if (last?.role === "assistant" && prev.length > 1 && prev[prev.length - 2]?.role === "user") {
+                if (last?.role === "assistant" && snapshot.startsWith(last.content)) {
                   return prev.map((m, i) => (i === prev.length - 1 ? { ...m, content: snapshot } : m));
                 }
-                return [...prev, { role: "assistant", content: snapshot }];
+                if (last?.role === "user") {
+                  return [...prev, { role: "assistant", content: snapshot }];
+                }
+                return prev.map((m, i) => (i === prev.length - 1 ? { ...m, content: snapshot } : m));
               });
             }
           } catch {
+            // Incomplete JSON chunk — put it back at the front of the buffer and wait for more data
             buffer = line + "\n" + buffer;
+            // Break out of BOTH the inner while and continue outer reader loop to fetch more bytes
+            newlineIndex = -1;
             break;
           }
         }

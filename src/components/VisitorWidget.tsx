@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, Clock, Cloud, Sun, CloudRain, CloudSnow, CloudLightning, CloudDrizzle, Wind, Thermometer } from "lucide-react";
+import { MapPin, Clock, Cloud, Sun, CloudRain, CloudSnow, CloudLightning, CloudDrizzle, Wind } from "lucide-react";
 
 interface WeatherData {
   temp: number;
@@ -35,6 +35,9 @@ const VisitorWidget = ({ inline = false }: { inline?: boolean }) => {
   const [currentTime, setCurrentTime] = useState("");
 
   useEffect(() => {
+    let interval: ReturnType<typeof setInterval> | undefined;
+    let cancelled = false;
+
     const fetchVisitorData = async () => {
       try {
         // Try multiple geolocation providers for reliability
@@ -115,6 +118,7 @@ const VisitorWidget = ({ inline = false }: { inline?: boolean }) => {
           weather,
         });
 
+        if (cancelled) return;
         // Update time every second
         const updateTime = () => {
           const t = new Date().toLocaleTimeString("en-US", {
@@ -127,11 +131,11 @@ const VisitorWidget = ({ inline = false }: { inline?: boolean }) => {
           setCurrentTime(t);
         };
         updateTime();
-        const interval = setInterval(updateTime, 1000);
-        return () => clearInterval(interval);
+        interval = setInterval(updateTime, 1000);
       } catch {
         // Geolocation failed, use browser defaults
         const now = new Date();
+        if (cancelled) return;
         setData({
           city: "Your Location",
           region: "",
@@ -145,12 +149,16 @@ const VisitorWidget = ({ inline = false }: { inline?: boolean }) => {
           setCurrentTime(new Date().toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", second: "2-digit", hour12: true }));
         };
         updateTime();
-        const interval = setInterval(updateTime, 1000);
-        return () => clearInterval(interval);
+        interval = setInterval(updateTime, 1000);
       }
     };
 
     fetchVisitorData();
+
+    return () => {
+      cancelled = true;
+      if (interval) clearInterval(interval);
+    };
   }, []);
 
   if (!data) return null;
